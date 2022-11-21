@@ -1,9 +1,0 @@
-/* 
-    General Styles used on every website (Don't Repeat Yourself)
-*/
-.signup-container{
-    margin: auto;
-    width: 50%;
-    border: 3px solid green;
-    padding: 10px;
-}

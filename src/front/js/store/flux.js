@@ -46,7 +46,20 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				//reset the global store
 				setStore({ demo: demo });
+			},
+			genericFetch: async (endpoint, method="GET", data=undefined)=>{
+				let BACKEND_URL = process.env.BACKEND_URL
+				let response = await fetch(BACKEND_URL+endpoint,{
+					method:method,
+					body: data?JSON.stringify(data):undefined,
+					headers: {
+						'Content-type': 'application/json; charset=UTF-8'
+					}
+					
+				})
+				return response
 			}
+
 		}
 	};
 };
