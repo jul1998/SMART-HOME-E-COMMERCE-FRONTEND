@@ -1,9 +1,10 @@
 import React, {useState} from "react";
+import "../../styles/signup.css";
 
 function Signup() {
 
-const [formData, setFormData] = useState(
-        {fullname: "",
+const [formData, setFormData] = useState({
+        fullname: "",
         password:"",
         confirmPassword:"", 
         email: "",
@@ -14,22 +15,42 @@ const [formData, setFormData] = useState(
     }
     )
 
+
   function handleChange(event){
     console.log("handle func")
-    const {name,value,type,checked}= event.target
+    const {name,value,type,checked}= event.target //Destructurar data de formData
     setFormData(prevFormData =>{
         return{
-            [name]: type==="checkbox"? checked: value
+            ...prevFormData, // Traer todo lo que se haya generado por el user
+            [name]: type==="checkbox"? checked: value // Si el type del input es checkbox, retorne un boolean,
+            // de lo contrario, retorne el valor digitado por user
         }
     })
 }
 
     console.log(formData)
 
+    function checkPasswordFunc(){
+        console.log("Password check")
+        if(formData.password === formData.confirmPassword && formData.password.length > 3) {
+            return true
+        } else {
+            return false
+        }
+    }
+
     function handleSubmit(event){
         event.preventDefault()
-        console.log("Handle submit func")
+        if (checkPasswordFunc()){
+            console.log("Successfully signed up")
+        }else{
+            console.log("Passwords do not match")
+        }
+        
+        
     }
+
+
 
   return (
     <div className="signup-container">
@@ -94,6 +115,19 @@ const [formData, setFormData] = useState(
                   </div>
 
                   <div className="col-md-12">
+                    <input
+                      className="form-control"
+                      type="text"
+                      name="address"
+                      onChange={handleChange}
+                      placeholder="Address"
+                      value={formData.address}
+                      required
+                    />
+
+                  </div>
+
+                  <div className="col-md-12">
                     <select className="form-select mt-3" 
                     required
                     onChange={handleChange}
@@ -137,6 +171,12 @@ const [formData, setFormData] = useState(
                       value={formData.confirmPassword}
                       required
                     />
+                    {checkPasswordFunc()?
+                     null
+                     :<ul style={{color:"red"}}>
+                        <li>Password does not match</li>
+                        <li>Password is less than 3 chars</li>
+                        </ul>}
                     <div className="valid-feedback">Password does not match</div>
                     <div className="invalid-feedback">
                       Password field cannot be blank!
