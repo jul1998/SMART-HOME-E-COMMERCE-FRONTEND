@@ -1,7 +1,12 @@
-import React, {useState} from "react";
+import React, {useState, useContext} from "react";
 import "../../styles/signup.css";
+import Swal from 'sweetalert2'
+import {Context} from "../store/appContext"
+
 
 function Signup() {
+
+const {store, actions} = useContext(Context)
 
 const [formData, setFormData] = useState({
         fullname: "",
@@ -30,6 +35,37 @@ const [formData, setFormData] = useState({
 
     console.log(formData)
 
+    async function signup (){
+        const {fullname, password, email, phone, address} = formData
+        console.log(fullname)
+
+        let bodyObj = {
+            name: fullname,
+            password: password,
+            email:email,
+            phone:phone,
+            address:address
+        }
+
+        let response = await actions.genericFetch("signup","POST",bodyObj) //Get response status prop
+        let jsonResponse = await response.json() // Get msg from backend endpoint
+
+        if (response.ok){ 
+            Swal.fire({
+                icon: 'success',
+                title: 'Great!',
+                text: `${jsonResponse.mensaje}`,
+              })
+            
+        }else{
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: `${jsonResponse.mensaje}`,
+              })
+        }
+    }
+
     function checkPasswordFunc(){
         console.log("Password check")
         if(formData.password === formData.confirmPassword && formData.password.length > 3) {
@@ -42,14 +78,15 @@ const [formData, setFormData] = useState({
     function handleSubmit(event){
         event.preventDefault()
         if (checkPasswordFunc()){
-            console.log("Successfully signed up")
+            signup()
         }else{
-            console.log("Passwords do not match")
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Password does not match or is less than 3 chars ',
+              })
         }
-        
-        
     }
-
 
 
   return (
@@ -134,7 +171,7 @@ const [formData, setFormData] = useState({
                     name="userType"
                     value={formData.userType}>
                       <option selected disabled value="">
-                        user Type
+                        User Type
                       </option>
                       <option value="admin">Admin</option>
                       <option value="client">Client</option>
