@@ -61,7 +61,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					}
 					
 				})
-				console.log("here")
+
 				return response
 			}
 
