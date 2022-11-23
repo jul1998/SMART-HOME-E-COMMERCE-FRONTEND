@@ -49,6 +49,7 @@ const [formData, setFormData] = useState({
 
         let response = await actions.genericFetch("signup","POST",bodyObj) //Get response status prop
         let jsonResponse = await response.json() // Get msg from backend endpoint
+        console.log(response)
 
         if (response.ok){ 
             Swal.fire({
