@@ -5,6 +5,7 @@ import { Context } from "../store/appContext";
 
 function ProductItem({product}) {
 
+  //Esto le da formato a cualquier interger para aparecer como moneda
   const priceDisplay = product.precio.toLocaleString("en-US", {
     style: "currency",
     currency: "USD",
