@@ -1,0 +1,11 @@
+.product_list_container{
+    padding: 50px;
+    width: 100%;
+}
+
+.product_list_container img{
+    width: 50%;
+    height: 50%;
+    align-self: center;
+
+}
