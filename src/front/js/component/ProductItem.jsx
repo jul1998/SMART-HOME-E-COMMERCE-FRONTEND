@@ -8,7 +8,8 @@ function ProductItem(){
 
     useEffect(()=>{
         async function fetch(){
-            let response = await actions.genericFetch("products_list")
+            let BACKEND_URL = process.env.BACKEND_URL
+			let response = await fetch(BACKEND_URL+"products_list")
             console.log(response)
         }
 
