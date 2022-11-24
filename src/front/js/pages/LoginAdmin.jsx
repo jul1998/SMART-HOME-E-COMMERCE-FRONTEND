@@ -121,4 +121,4 @@ function LoginAdmin() {
   );
 }
 
-export { Login };
+export { LoginAdmin };
