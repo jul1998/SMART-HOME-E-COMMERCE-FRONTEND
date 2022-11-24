@@ -224,4 +224,4 @@ const [formData, setFormData] = useState({
   );
 }
 
-export { Signup };
+export { SignupAdmin };
