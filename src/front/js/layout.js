@@ -9,6 +9,7 @@ import { Signup } from "./pages/signup.jsx"; //Component to register user
 import { Login } from "./pages/Login.jsx";
 import { Products } from "./pages/ProductPage.jsx"
 import { LoginAdmin } from "./pages/LoginAdmin.jsx"
+import { SignupAdmin } from "./pages/signupAdmin.jsx";
 import injectContext from "./store/appContext";
 
 import { Navbar } from "./component/navbar";

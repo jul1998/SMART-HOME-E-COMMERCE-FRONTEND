@@ -1,93 +1,93 @@
-import React, {useState, useContext} from "react";
+import React, { useState, useContext } from "react";
 import "../../styles/signup.css";
 import Swal from 'sweetalert2'
-import {Context} from "../store/appContext"
+import { Context } from "../store/appContext"
 
 
 function Signup() {
 
-const {store, actions} = useContext(Context)
+  const { store, actions } = useContext(Context)
 
-const [formData, setFormData] = useState({
-        fullname: "",
-        password:"",
-        confirmPassword:"", 
-        email: "",
-        userType:"", 
-        newsLetter:"",
-        phone:"",
-        address:""
-    }
-    )
+  const [formData, setFormData] = useState({
+    fullname: "",
+    password: "",
+    confirmPassword: "",
+    email: "",
+    userType: "",
+    newsLetter: "",
+    phone: "",
+    address: ""
+  }
+  )
 
 
-  function handleChange(event){
+  function handleChange(event) {
     console.log("handle func")
-    const {name,value,type,checked}= event.target //Destructurar data de formData
-    setFormData(prevFormData =>{
-        return{
-            ...prevFormData, // Traer todo lo que se haya generado por el user
-            [name]: type==="checkbox"? checked: value // Si el type del input es checkbox, retorne un boolean,
-            // de lo contrario, retorne el valor digitado por user
-        }
+    const { name, value, type, checked } = event.target //Destructurar data de formData
+    setFormData(prevFormData => {
+      return {
+        ...prevFormData, // Traer todo lo que se haya generado por el user
+        [name]: type === "checkbox" ? checked : value // Si el type del input es checkbox, retorne un boolean,
+        // de lo contrario, retorne el valor digitado por user
+      }
     })
-}
+  }
 
-    console.log(formData)
+  console.log(formData)
 
-    async function signup (){
-        const {fullname, password, email, phone, address} = formData
-        console.log(fullname)
+  async function signup() {
+    const { fullname, password, email, phone, address } = formData
+    console.log(fullname)
 
-        let bodyObj = {
-            name: fullname,
-            password: password,
-            email:email,
-            phone:phone,
-            address:address
-        }
-
-        let response = await actions.genericFetch("signup","POST",bodyObj) //Get response status prop
-        let jsonResponse = await response.json() // Get msg from backend endpoint
-        console.log(response)
-
-        if (response.ok){ 
-            Swal.fire({
-                icon: 'success',
-                title: 'Great!',
-                text: `${jsonResponse.mensaje}`,
-              })
-            
-        }else{
-            Swal.fire({
-                icon: 'error',
-                title: 'Error',
-                text: `${jsonResponse.mensaje}`,
-              })
-        }
+    let bodyObj = {
+      name: fullname,
+      password: password,
+      email: email,
+      phone: phone,
+      address: address
     }
 
-    function checkPasswordFunc(){
-        console.log("Password check")
-        if(formData.password === formData.confirmPassword && formData.password.length > 3) {
-            return true
-        } else {
-            return false
-        }
-    }
+    let response = await actions.genericFetch("signup", "POST", bodyObj) //Get response status prop
+    let jsonResponse = await response.json() // Get msg from backend endpoint
+    console.log(response)
 
-    function handleSubmit(event){
-        event.preventDefault()
-        if (checkPasswordFunc()){
-            signup()
-        }else{
-            Swal.fire({
-                icon: 'error',
-                title: 'Oops...',
-                text: 'Password does not match or is less than 3 chars ',
-              })
-        }
+    if (response.ok) {
+      Swal.fire({
+        icon: 'success',
+        title: 'Great!',
+        text: `${jsonResponse.mensaje}`,
+      })
+
+    } else {
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: `${jsonResponse.mensaje}`,
+      })
     }
+  }
+
+  function checkPasswordFunc() {
+    console.log("Password check")
+    if (formData.password === formData.confirmPassword && formData.password.length > 3) {
+      return true
+    } else {
+      return false
+    }
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault()
+    if (checkPasswordFunc()) {
+      signup()
+    } else {
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Password does not match or is less than 3 chars ',
+      })
+    }
+  }
 
 
   return (
@@ -144,8 +144,8 @@ const [formData, setFormData] = useState({
 
                       required
                     />
-                    
-                    <small style={{color:"white"}}>Format: 123-456-7890</small>
+
+                    <small style={{ color: "white" }}>Format: 123-456-7890</small>
                     <div className="valid-feedback">Email field is valid!</div>
                     <div className="invalid-feedback">
                       Email field cannot be blank!
@@ -191,12 +191,12 @@ const [formData, setFormData] = useState({
                       value={formData.confirmPassword}
                       required
                     />
-                    {checkPasswordFunc()?
-                     null
-                     :<ul style={{color:"red"}}>
+                    {checkPasswordFunc() ?
+                      null
+                      : <ul style={{ color: "red" }}>
                         <li>Password does not match</li>
                         <li>Password is less than 3 chars</li>
-                        </ul>}
+                      </ul>}
                     <div className="valid-feedback">Password does not match</div>
                     <div className="invalid-feedback">
                       Password field cannot be blank!
@@ -211,7 +211,7 @@ const [formData, setFormData] = useState({
                       id="invalidCheck"
                       name="newsLetter"
                       onChange={handleChange}
-                      
+
                     />
                     <label className="form-check-label">
                       I want to receive newsletters from this website
@@ -220,7 +220,7 @@ const [formData, setFormData] = useState({
                     <div className="invalid-feedback">
                       Please confirm that the entered data are all correct!
                     </div>
-                    
+
                   </div>
 
                   <div className="form-button mt-3">
