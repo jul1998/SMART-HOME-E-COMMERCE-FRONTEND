@@ -199,10 +199,7 @@ function SignupAdmin() {
                       onChange={handleChange}
 
                     />
-                    <label className="form-check-label">
-                      I want to receive newsletters from this website
-                    </label>
-
+                
                     <div className="invalid-feedback">
                       Please confirm that the entered data are all correct!
                     </div>
