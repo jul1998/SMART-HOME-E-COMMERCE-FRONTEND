@@ -69,7 +69,7 @@ function LoginAdmin() {
               <div className="form-items">
                 <h3>Login Admin</h3>
                 <p>Fill in the data below.</p>
-                <form onSubmit={login} className="requires-validation" >
+                <form onSubmit={loginAdmin} className="requires-validation" >
 
                   <div className="col-md-12">
                     <input
