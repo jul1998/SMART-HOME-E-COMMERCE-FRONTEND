@@ -12,7 +12,7 @@ import { LoginAdmin } from "./pages/LoginAdmin.jsx"
 import {SignupAdmin} from "./pages/SignupAdmin.jsx"
 import injectContext from "./store/appContext";
 
-import { Navbar } from "./component/navbar";
+import { Navbar } from "./component/navbar.jsx";
 import { Footer } from "./component/footer";
 
 //create your first component
