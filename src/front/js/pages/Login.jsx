@@ -69,7 +69,7 @@ async function login (event){
           <div className="form-holder">
             <div className="form-content">
               <div className="form-items">
-                <h3>Register Today</h3>
+                <h3>Login</h3>
                 <p>Fill in the data below.</p>
                 <form onSubmit={login} className="requires-validation" >
                   

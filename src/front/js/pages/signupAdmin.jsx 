@@ -4,7 +4,7 @@ import Swal from 'sweetalert2'
 import {Context} from "../store/appContext"
 
 
-function Signup() {
+function SignupAdmin() {
 
 const {store, actions} = useContext(Context)
 
@@ -35,8 +35,8 @@ const [formData, setFormData] = useState({
 
     console.log(formData)
 
-    async function signup (){
-        const {fullname, password, email, phone, address} = formData
+    async function signupAdmin(){
+        const {fullname, password, email, phone } = formData
         console.log(fullname)
 
         let bodyObj = {
@@ -44,10 +44,9 @@ const [formData, setFormData] = useState({
             password: password,
             email:email,
             phone:phone,
-            address:address
         }
 
-        let response = await actions.genericFetch("signup","POST",bodyObj) //Get response status prop
+        let response = await actions.genericFetch("signupAdmin","POST",bodyObj) //Get response status prop
         let jsonResponse = await response.json() // Get msg from backend endpoint
         console.log(response)
 
@@ -91,13 +90,13 @@ const [formData, setFormData] = useState({
 
 
   return (
-    <div className="signup-container">
+    <div className="signupAdmin-container">
       <div className="form-body">
         <div className="row">
           <div className="form-holder">
             <div className="form-content">
               <div className="form-items">
-                <h3>Register Today</h3>
+                <h3>Register Admin</h3>
                 <p>Fill in the data below.</p>
                 <form onSubmit={handleSubmit} className="requires-validation" >
                   <div className="col-md-12">
@@ -149,37 +148,6 @@ const [formData, setFormData] = useState({
                     <div className="valid-feedback">Email field is valid!</div>
                     <div className="invalid-feedback">
                       Email field cannot be blank!
-                    </div>
-                  </div>
-
-                  <div className="col-md-12">
-                    <input
-                      className="form-control"
-                      type="text"
-                      name="address"
-                      onChange={handleChange}
-                      placeholder="Address"
-                      value={formData.address}
-                      required
-                    />
-
-                  </div>
-
-                  <div className="col-md-12">
-                    <select className="form-select mt-3" 
-                    required
-                    onChange={handleChange}
-                    name="userType"
-                    value={formData.userType}>
-                      <option selected disabled value="">
-                        User Type
-                      </option>
-                      <option value="admin">Admin</option>
-                      <option value="client">Client</option>
-                    </select>
-                    <div className="valid-feedback">You selected a position!</div>
-                    <div className="invalid-feedback">
-                      Please select a type
                     </div>
                   </div>
 
@@ -243,7 +211,7 @@ const [formData, setFormData] = useState({
 
                   <div className="form-button mt-3">
                     <button id="submit" type="submit" className="btn btn-primary">
-                      Register
+                      RegisterAdmin
                     </button>
                   </div>
                 </form>

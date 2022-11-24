@@ -166,24 +166,6 @@ const [formData, setFormData] = useState({
                   </div>
 
                   <div className="col-md-12">
-                    <select className="form-select mt-3" 
-                    required
-                    onChange={handleChange}
-                    name="userType"
-                    value={formData.userType}>
-                      <option selected disabled value="">
-                        User Type
-                      </option>
-                      <option value="admin">Admin</option>
-                      <option value="client">Client</option>
-                    </select>
-                    <div className="valid-feedback">You selected a position!</div>
-                    <div className="invalid-feedback">
-                      Please select a type
-                    </div>
-                  </div>
-
-                  <div className="col-md-12">
                     <input
                       className="form-control"
                       type="password"

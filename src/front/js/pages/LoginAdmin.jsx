@@ -61,13 +61,13 @@ function LoginAdmin() {
 
 
   return (
-    <div className="signup-container">
+    <div className="signupAdmin-container">
       <div className="form-body">
         <div className="row">
           <div className="form-holder">
             <div className="form-content">
               <div className="form-items">
-                <h3>Register Today</h3>
+                <h3>Login Admin</h3>
                 <p>Fill in the data below.</p>
                 <form onSubmit={login} className="requires-validation" >
 
@@ -108,7 +108,7 @@ function LoginAdmin() {
 
                   <div className="form-button mt-3">
                     <button id="submit" type="submit" className="btn btn-primary">
-                      Login
+                      Login Admin
                     </button>
                   </div>
                 </form>

@@ -5,9 +5,9 @@ import ScrollToTop from "./component/scrollToTop";
 import { Home } from "./pages/home";
 import { Demo } from "./pages/demo";
 import { Single } from "./pages/single";
-import {Signup} from "./pages/signup.jsx"; //Component to register user
+import { Signup } from "./pages/signup.jsx"; //Component to register user
 import { Login } from "./pages/Login.jsx";
-import {Products} from "./pages/ProductPage.jsx"
+import { Products } from "./pages/ProductPage.jsx"
 import { LoginAdmin } from "./pages/LoginAdmin.jsx"
 import injectContext from "./store/appContext";
 
@@ -33,6 +33,7 @@ const Layout = () => {
                         <Route element={<Login />} path="/login" />
                         <Route element={<Products />} path="/products" />
                         <Route element={<LoginAdmin />} path="/LoginAdmin" />
+                        <Route element={<SignupAdmin />} path="/signupAdmin" />
                         <Route element={<h1>Not found!</h1>} />
                     </Routes>
                     <Footer />
