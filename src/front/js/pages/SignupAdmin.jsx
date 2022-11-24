@@ -78,7 +78,7 @@ const [formData, setFormData] = useState({
     function handleSubmit(event){
         event.preventDefault()
         if (checkPasswordFunc()){
-            signup()
+          signupAdmin()
         }else{
             Swal.fire({
                 icon: 'error',
