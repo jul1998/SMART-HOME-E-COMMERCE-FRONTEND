@@ -1,14 +1,18 @@
 import React, { useState, useContext } from "react";
-import "../../styles/login.css";
+import "../../../styles/login.css";
 import Swal from "sweetalert2";
-import { Context } from "../store/appContext";
+import { Context } from "../../store/appContext";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
   const { store, actions } = useContext(Context);
+  const navigate = useNavigate()
+
 
   //let response = actions.login()
   //let res1 = store.user
   //console.log(res1)
+  console.log(actions.isLogOut)
 
   const [formData, setFormData] = useState({
     password:"",
@@ -63,10 +67,12 @@ async function login (event){
 }
 
 async function createProtectedRoute(){
-  let response = await actions.genericFetchProtected("helloprotected")
-  console.log(await response.json())
+  let response = await actions.genericFetchProtected("helloprotected") // Get reponse object
+  let responseJson = await response.json() // Get response from backend as an object
   if (response.ok){
     console.log("Protected route")
+    return navigate(`/userProfile/${responseJson.user_id}`) // We use the property user_id from response in route
+    // helloprotected located in backend
   }
   
 }

@@ -2,7 +2,9 @@ import React from "react";
 import "../../styles/navbar.css";
 import { Link } from "react-router-dom";
 
+
 export const Navbar = () => {
+
   return (
     <nav className="navbar navbar-expand-lg bg-dark">
   <div className="container-fluid">
@@ -27,6 +29,9 @@ export const Navbar = () => {
         </li>
         <li className="nav-item">
           <Link to="/signup"><button className="btn btn-primary">Sign Up</button></Link>
+        </li>
+        <li className="nav-item">
+          <Link to="/logout"><button className="btn btn-primary">Logout</button></Link>
         </li>
         <li className="nav-item dropdown">
           <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
