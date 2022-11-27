@@ -65,6 +65,9 @@ async function login (event){
 async function createProtectedRoute(){
   let response = await actions.genericFetchProtected("helloprotected")
   console.log(await response.json())
+  if (response.ok){
+    console.log("Protected route")
+  }
   
 }
 
