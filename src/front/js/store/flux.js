@@ -67,7 +67,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 				})
 
 				return response
-			}
+			},
+			
 
 		}
 	};

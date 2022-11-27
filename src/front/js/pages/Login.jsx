@@ -40,24 +40,32 @@ async function login (event){
         email:email
     }
 
-    let response = await actions.login("login","POST",bodyObj) //Get response status prop
-    let jsonResponse = await response.json() // Get msg from backend endpoint
-    console.log(jsonResponse)
+    let loginResponse = await actions.login("login","POST",bodyObj) //Get two variables: 1.response, 2.responseJson
+    let jsonRes = await loginResponse.responseJson // Here we access to the property responseJson from object response
+    //that contains token, msg. email from user
+    
 
-    if (response.ok){ 
+    if (loginResponse.response.ok){ 
         Swal.fire({
             icon: 'success',
             title: 'Great!',
-            text: `${jsonResponse.message}`,
+            text: `${jsonRes.message}`,
           })
+        createProtectedRoute()
         
     }else{
         Swal.fire({
             icon: 'error',
             title: 'Error',
-            text: `${jsonResponse.message}`,
+            text: `${jsonRes.message}`,
           })
     }
+}
+
+async function createProtectedRoute(){
+  let response = await actions.genericFetchProtected("helloprotected")
+  console.log(await response.json())
+  
 }
 
 
