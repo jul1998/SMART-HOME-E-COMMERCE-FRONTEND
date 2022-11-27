@@ -1,6 +1,10 @@
+import React, { useState, useContext } from "react";
+
+
+
 export const userStore={
     user:{
-        "name":"Julian"
+        "isLogOut":"false"
     },
 }
 
@@ -33,8 +37,19 @@ export function userActions(getStore, getActions, setStore){
                     }
             })
             
-            
             return response
+        },
+        logoutFetch: async ()=>{
+            const store = getStore()
+            let response = await getActions().genericFetchProtected("logout")
+            localStorage.setItem("token", "")
+            setStore({...store,token:""})
+            return response
+
+        },
+        isLogOut: ()=>{
+            const [isLogOut, setLogOut]= useState(false)
+            return(isLogOut)
         }
 
     }
