@@ -1,6 +1,7 @@
 import React from "react";
 import "../../styles/navbar.css";
 import { Link } from "react-router-dom";
+import smartHomeImg from "../../img/LOGOTIPO.png";
 
 export const Navbar = () => {
   return (
@@ -8,7 +9,7 @@ export const Navbar = () => {
   <div className="container-fluid">
     <a className="navbar-brand" href="#">
           <img
-            src="/workspace/SMART-HOME-E-COMMERCE-FRONTEND/docs/assets/LOGOTIPO-TECHLIGHT-ATODOCOLOR-PNG.png"
+            src={smartHomeImg}
             width="30"
             height="30"
             alt=""
