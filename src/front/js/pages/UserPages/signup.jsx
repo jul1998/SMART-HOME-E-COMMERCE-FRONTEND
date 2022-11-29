@@ -49,20 +49,20 @@ function Signup() {
 
     let response = await actions.genericFetch("signup", "POST", bodyObj) //Get response status prop
     let jsonResponse = await response.json() // Get msg from backend endpoint
-    console.log(response)
-
+    console.log(jsonResponse)
+    
     if (response.ok) {
       Swal.fire({
         icon: 'success',
         title: 'Great!',
-        text: `${jsonResponse.mensaje}`,
+        text: `${jsonResponse.msg}`,
       })
 
     } else {
       Swal.fire({
         icon: 'error',
         title: 'Error',
-        text: `${jsonResponse.mensaje}`,
+        text: `${jsonResponse.message}`,
       })
     }
   }

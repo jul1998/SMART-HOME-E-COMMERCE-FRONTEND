@@ -11,6 +11,7 @@ import { Products } from "./pages/ProductPage/ProductPage.jsx";
 import { LoginAdmin } from "./pages/UserAdminPages/LoginAdmin.jsx";
 import { SignupAdmin } from "./pages/UserAdminPages/SignupAdmin.jsx";
 import { UserProfile } from "./pages/UserPages/UserProfile.jsx";
+import { UserSettings } from "./pages/UserPages/UserSettings.jsx";
 import { LogOut } from "./component/UserComp/LogOut.jsx";
 
 import injectContext from "./store/appContext";
@@ -40,6 +41,7 @@ const Layout = () => {
             <Route element={<SignupAdmin />} path="/signupAdmin" />
             <Route element={<SignupAdmin />} path="/signupAdmin" />
             <Route element={<UserProfile />} path="/userProfile/:theid" />
+            <Route element={<UserSettings />} path="/userProfile/:theid/settings"/>
             <Route element={<LogOut />} path="/logout" />
             <Route element={<h1>Not found!</h1>} />
           </Routes>
