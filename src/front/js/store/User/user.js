@@ -50,7 +50,7 @@ export function userActions(getStore, getActions, setStore){
         isLogOut: ()=>{
             const [isLogOut, setLogOut]= useState(false)
             return(isLogOut)
-        }
+       }
 
     }
 }
