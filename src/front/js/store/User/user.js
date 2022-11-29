@@ -26,14 +26,16 @@ export function userActions(getStore, getActions, setStore){
         },
         genericFetchProtected: async (endpoint, method = "GET", data = undefined) => {
             const store = getStore()
-            const storeToken = store.token
+            const storeToken = store.token //This token is stored in store
+            const localStorageToken = localStorage.getItem("token") //This is the same token store in local Storage
+            console.log(localStorageToken)
             let BACKEND_URL = process.env.BACKEND_URL
             let response = await fetch(BACKEND_URL+endpoint,{
                 method: method,
                 body: data?JSON.stringify(data):undefined,
                 headers: {
                         'Content-type': 'application/json; charset=UTF-8',
-                        "Authorization": "Bearer " + storeToken
+                        "Authorization": "Bearer " + localStorageToken
                     }
             })
             

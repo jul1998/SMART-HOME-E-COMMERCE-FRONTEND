@@ -12,7 +12,6 @@ function Login() {
   //let response = actions.login()
   //let res1 = store.user
   //console.log(res1)
-  console.log(actions.isLogOut)
 
   const [formData, setFormData] = useState({
     password:"",
@@ -33,7 +32,6 @@ setFormData(prevFormData =>{
 })
 }
 
-console.log(formData)
 
 async function login (event){
     event.preventDefault()
@@ -47,6 +45,7 @@ async function login (event){
     let loginResponse = await actions.login("login","POST",bodyObj) //Get two variables: 1.response, 2.responseJson
     let jsonRes = await loginResponse.responseJson // Here we access to the property responseJson from object response
     //that contains token, msg. email from user
+    
     
 
     if (loginResponse.response.ok){ 
