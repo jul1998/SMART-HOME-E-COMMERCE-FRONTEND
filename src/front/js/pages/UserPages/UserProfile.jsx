@@ -37,7 +37,7 @@ const displayImg = userInfo.img_profile? userInfo.img_profile: "https://upload.w
         <p>Phone number: {userInfo.phone}</p>
 
         <p>
-          <button className="button-userProfile">Edit information</button>
+        <Link to={`/userProfile/${params.theid}/settings`}><button className="button-userProfile">Edit information</button></Link>
         </p>
       </div>
     </div>
