@@ -30,3 +30,17 @@
   .img-userProfile{
     width: 100%;
   }
+
+  .userSettings-main{
+    border: 5px solid;
+    text-align: center;
+    padding: 50px 0;
+    width: 100%;
+
+  }
+
+  .userSettings-main form{
+    display: inline-block;
+
+
+  }
