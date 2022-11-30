@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSquare } from "@fortawesome/free-solid-svg-icons"
 
-<FontAwesome icon={ faSquare } />
+//<FontAwesome icon={ faSquare } />
 
 export const Navbar = () => {
   return (
