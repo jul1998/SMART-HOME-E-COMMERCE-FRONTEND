@@ -1,19 +1,45 @@
-import formurlencoded from 
+import formUrlEncoded from "form-urlencoded"
 export const paypalStore = {
-    accessToken:{
-        "paypalAccessToken":""
+    accessToken: {
+        "paypalAccessToken": ""
     }
 }
 
-export function paypalActions(getStore, getActions, setStore){
+export function paypalActions(getStore, getActions, setStore) {
     let PAYPAL_API_TOKEN_URL = process.env.PAYPAL_API_TOKEN_URL
+
+    let obj = {
+        'grant_type': 'client_credentials'
+    }
+
+    let head = formUrlEncoded(obj)
+
+    let access = {
+        Username: process.env.PAYPAL_USERNAME,
+        Password: process.env.PAYPAL_PASSWORD
+    }
+
     return {
-        getAccessToken: async (merthod="POST") => {
-            let response = fetch(PAYPAL_API_TOKEN_URL, {
+        getAccessToken: async (method = "POST") => {
+            let response = await fetch(PAYPAL_API_TOKEN_URL, {
                 method: method,
-                headers: {"Content-Type": "application/json"}
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8', 'Authorization': 'Basic ' + btoa(access.Username + ':' + access.Password) },
+                body: head
+            })
+            let promise = await response.json()
+            console.log(promise.access_token)
+        },
+
+
+        payment: async (method = "GET") => {
+            let response = await fetch(PAYPAL_API_TOKEN_URL, {
+                method: method,
+                headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer' + 'A21AAIsEFQol0sX-IPEAIg8LF0A1RjUGw4k_l8cRjzZia4y09QlNyU4Z_WxvsqGU0_c0iJBAMgrcLCE9QvajQ8trzCV_b60IA'},
                 body: JSON.stringify()
             })
+            let promise = await response.json()
+            console.log(promise.access_token)
         }
-    }
+        
+    }   
 }

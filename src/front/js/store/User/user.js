@@ -9,7 +9,7 @@ export function userActions(getStore, getActions, setStore){
     return{
         login: async (endpoint, method="GET", data=undefined)=>{
 
-            let response = fetch(BACKEND_URL+endpoint, {
+            let response = await fetch(BACKEND_URL+endpoint, {
                 method: method,
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(data)

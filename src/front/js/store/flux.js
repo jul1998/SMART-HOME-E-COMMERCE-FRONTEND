@@ -1,5 +1,7 @@
 import { userStore, userActions } from "./User/user";
 import { userAdminStore, userAdminActions } from "./User/userAdmin";
+import { paypalActions, paypalStore } from "./Paypal/token";
+
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
@@ -17,12 +19,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			],
 			...userStore,
-			...userAdminStore
+			...userAdminStore,
+			...paypalStore
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
 			...userActions(getStore, getActions, setStore),
 			...userAdminActions(getStore, getActions, setStore),
+			...paypalActions(getStore, getActions, setStore),
 			
 			exampleFunction: () => {
 				getActions().changeColor(0, "green");
