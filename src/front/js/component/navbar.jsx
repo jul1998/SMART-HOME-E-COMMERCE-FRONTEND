@@ -1,8 +1,21 @@
-import React from "react";
+import React, {useContext} from "react";
 import "../../styles/navbar.css";
 import { Link } from "react-router-dom";
 import smartHomeImg from "../../img/LOGOTIPO.png";
+import { Context } from "../store/appContext";
 export const Navbar = () => {
+
+
+function showToken(){
+  if (localStorage.getItem("token")){
+    return true
+
+  }else{
+    return false
+  }
+}
+
+
   return (
     <nav className="navbar navbar-expand-lg bg-dark">
       <div className="container-fluid">
@@ -32,15 +45,14 @@ export const Navbar = () => {
                 <button className="btn btn-primary">Home</button>
               </Link>
             </li>
-            <li className="nav-item">
-              <Link to="/login">
+            <li className="nav-item">{!showToken()?<Link to="/login">
                 <button className="btn btn-primary">Login</button>
-              </Link>
+              </Link>:null}
             </li>
-            <li className="nav-item">
-              <Link to="/signup">
+            <li className="nav-item"> {!showToken()?<Link to="/signup">
                 <button className="btn btn-primary">Sign Up</button>
-              </Link>
+              </Link>:null}
+              
             </li>
             <li className="nav-item">
               <Link to="/logout">

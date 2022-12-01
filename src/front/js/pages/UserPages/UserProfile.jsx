@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect} from "react";
 import "../../../styles/userProfile.css";
-import Swal from "sweetalert2";
+
 import { Context } from "../../store/appContext";
 import { Link, useParams } from "react-router-dom";
 
