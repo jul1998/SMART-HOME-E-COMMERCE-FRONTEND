@@ -1,8 +1,8 @@
 import React, { useState, useContext, useEffect } from "react";
-import "../../styles/login.css";
+import "../../../styles/products.css";
 import Swal from "sweetalert2";
-import { Context } from "../store/appContext";
-import { ProductItem } from "../component/ProductItem.jsx";
+import { Context } from "../../store/appContext";
+import { ProductItem } from "../../component/ProductItem.jsx";
 
 function Products() {
   const { store, actions } = useContext(Context);
@@ -29,7 +29,6 @@ function Products() {
           <div class="col">{displayProducts}</div>
         </div>
       </div>
-      
     </div>
     
   );

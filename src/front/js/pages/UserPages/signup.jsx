@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
-import "../../styles/signup.css";
+import "../../../styles/signup.css";
 import Swal from 'sweetalert2'
-import { Context } from "../store/appContext"
+import { Context } from "../../store/appContext"
 
 
 function Signup() {
@@ -49,20 +49,20 @@ function Signup() {
 
     let response = await actions.genericFetch("signup", "POST", bodyObj) //Get response status prop
     let jsonResponse = await response.json() // Get msg from backend endpoint
-    console.log(response)
-
+    console.log(jsonResponse)
+    
     if (response.ok) {
       Swal.fire({
         icon: 'success',
         title: 'Great!',
-        text: `${jsonResponse.mensaje}`,
+        text: `${jsonResponse.msg}`,
       })
 
     } else {
       Swal.fire({
         icon: 'error',
         title: 'Error',
-        text: `${jsonResponse.mensaje}`,
+        text: `${jsonResponse.message}`,
       })
     }
   }
@@ -203,25 +203,7 @@ function Signup() {
                     </div>
                   </div>
 
-                  <div className="form-check">
-                    <input
-                      className="form-check-input"
-                      type="checkbox"
-                      value=""
-                      id="invalidCheck"
-                      name="newsLetter"
-                      onChange={handleChange}
-
-                    />
-                    <label className="form-check-label">
-                      I want to receive newsletters from this website
-                    </label>
-
-                    <div className="invalid-feedback">
-                      Please confirm that the entered data are all correct!
-                    </div>
-
-                  </div>
+                  
 
                   <div className="form-button mt-3">
                     <button id="submit" type="submit" className="btn btn-primary">
