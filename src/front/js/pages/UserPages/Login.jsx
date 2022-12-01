@@ -1,10 +1,13 @@
 import React, { useState, useContext } from "react";
-import "../../styles/login.css";
+import "../../../styles/login.css";
 import Swal from "sweetalert2";
-import { Context } from "../store/appContext";
+import { Context } from "../../store/appContext";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
   const { store, actions } = useContext(Context);
+  const navigate = useNavigate()
+
 
   //let response = actions.login()
   //let res1 = store.user
@@ -29,7 +32,6 @@ setFormData(prevFormData =>{
 })
 }
 
-console.log(formData)
 
 async function login (event){
     event.preventDefault()
@@ -40,24 +42,38 @@ async function login (event){
         email:email
     }
 
-    let response = await actions.login("login","POST",bodyObj) //Get response status prop
-    let jsonResponse = await response.json() // Get msg from backend endpoint
-    console.log(jsonResponse)
+    let loginResponse = await actions.login("login","POST",bodyObj) //Get two variables: 1.response, 2.responseJson
+    let jsonRes = await loginResponse.responseJson // Here we access to the property responseJson from object response
+    //that contains token, msg. email from user
+    
+    
 
-    if (response.ok){ 
+    if (loginResponse.response.ok){ 
         Swal.fire({
             icon: 'success',
             title: 'Great!',
-            text: `${jsonResponse.message}`,
+            text: `${jsonRes.message}`,
           })
+        createProtectedRoute()
         
     }else{
         Swal.fire({
             icon: 'error',
             title: 'Error',
-            text: `${jsonResponse.message}`,
+            text: `${jsonRes.message}`,
           })
     }
+}
+
+async function createProtectedRoute(){
+  let response = await actions.genericFetchProtected("helloprotected") // Get reponse object
+  let responseJson = await response.json() // Get response from backend as an object
+  if (response.ok){
+    console.log("Protected route")
+    return navigate(`/userProfile/${responseJson.user_id}`) // We use the property user_id from response in route
+    // helloprotected located in backend
+  }
+  
 }
 
 

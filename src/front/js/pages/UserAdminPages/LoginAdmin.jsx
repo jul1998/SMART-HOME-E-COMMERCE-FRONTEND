@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
-import "../../styles/loginAdmin.css";
+import "../../../styles/loginAdmin.css";
 import Swal from "sweetalert2";
-import { Context } from "../store/appContext";
+import { Context } from "../../store/appContext";
 
 function LoginAdmin() {
   const { store, actions } = useContext(Context);
