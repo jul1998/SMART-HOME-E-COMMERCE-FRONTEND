@@ -5,8 +5,8 @@ import smartHomeImg from "../../img/LOGOTIPO.png";
 export const Navbar = () => {
   return (
     <nav className="navbar navbar-expand-lg bg-dark">
-  <div className="container-fluid">
-    <a className="navbar-brand" href="/">
+      <div className="container-fluid">
+        <a className="navbar-brand" href="/">
           <img
             src={smartHomeImg}
             width="300"
@@ -60,7 +60,7 @@ export const Navbar = () => {
               <ul className="dropdown-menu">
                 <li>
                   <Link to="/products" className="dropdown-item">
-                  Productos
+                    Productos
                   </Link>
                 </li>
                 <li>
