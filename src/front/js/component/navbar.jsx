@@ -6,7 +6,7 @@ export const Navbar = () => {
   return (
     <nav className="navbar navbar-expand-lg bg-dark">
   <div className="container-fluid">
-    <a className="navbar-brand" href="https://3000-jul1998-smarthomeecomme-z8vl3i2nndi.ws-us77.gitpod.io">
+    <a className="navbar-brand" href="/">
           <img
             src={smartHomeImg}
             width="300"
@@ -55,12 +55,12 @@ export const Navbar = () => {
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
-                Dropdown
+                Carrito
               </a>
               <ul className="dropdown-menu">
                 <li>
                   <Link to="/products" className="dropdown-item">
-                  <FontAwesomeIcon icon="fa-regular fa-cart-shopping" />
+                  Productos
                   </Link>
                 </li>
                 <li>
@@ -89,7 +89,7 @@ export const Navbar = () => {
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
-                <FontAwesomeIcon icon="fa-thin fa-user" />
+                Persona
               </a>
               <ul className="dropdown-menu">
                 <li>
