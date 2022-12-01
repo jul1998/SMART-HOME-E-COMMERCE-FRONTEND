@@ -1,8 +1,6 @@
 import React from "react";
 import "../../styles/navbar.css";
 import { Link } from "react-router-dom";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSquare } from "@fortawesome/free-solid-svg-icons"
 
 //<FontAwesome icon={ faSquare } />
 
@@ -64,7 +62,7 @@ export const Navbar = () => {
               <ul className="dropdown-menu">
                 <li>
                   <Link to="/products" className="dropdown-item">
-                  <FontAwesomeIcon icon="fa-regular fa-cart-shopping" />
+                    carrito
                   </Link>
                 </li>
                 <li>
@@ -93,7 +91,6 @@ export const Navbar = () => {
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
-                <FontAwesomeIcon icon="fa-thin fa-user" />
               </a>
               <ul className="dropdown-menu">
                 <li>
