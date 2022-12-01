@@ -41,7 +41,7 @@ const Layout = () => {
             <Route element={<SignupAdmin />} path="/signupAdmin" />
             <Route element={<SignupAdmin />} path="/signupAdmin" />
             <Route element={<UserProfile />} path="/userProfile/:theid" />
-            <Route element={<UserSettings />} path="/userProfile/:theid/settings"/>
+            <Route element={<UserSettings />} path="/userProfile/:theid/settings" />
             <Route element={<LogOut />} path="/logout" />
             <Route element={<h1>Not found!</h1>} />
           </Routes>
