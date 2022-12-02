@@ -19,8 +19,10 @@ function ProductItem({product}) {
               <img className="product_image" src="https://img.freepik.com/free-photo/medium-shot-man-wearing-vr-glasses_23-2149126949.jpg?w=1060&t=st=1669229881~exp=1669230481~hmac=8d0657c3f598a067a170b07757c757f2d011f31316863f13c0b677472f28fe1d" alt="..."/>
               <div className="card-body">
                 <h5 className="card-title">{product.name}</h5>
-                <p class="card-text">Estado: {product.estado}</p>
-                <p class="card-text">Precio: {priceDisplay}</p>
+                <p className="card-text">Estado: {product.estado}</p>
+                <p className="card-text">Id: {product.id}</p>
+                <p className="card-text">Precio: {priceDisplay}</p>
+                <p className="card-text"><i class="fa-thin fa-heart"></i></p>
               </div>
             </div>
           </div>
