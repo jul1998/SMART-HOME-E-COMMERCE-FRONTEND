@@ -5,39 +5,53 @@ import ScrollToTop from "./component/scrollToTop";
 import { Home } from "./pages/home";
 import { Demo } from "./pages/demo";
 import { Single } from "./pages/single";
-import {Signup} from "./pages/signup.jsx"; //Component to register user
-import { Login } from "./pages/Login.jsx";
-import {Products} from "./pages/ProductPage.jsx"
+import { Signup } from "./pages/UserPages/signup.jsx"; //Component to register user
+import { Login } from "./pages/UserPages/Login.jsx";
+import { Products } from "./pages/ProductPage/ProductPage.jsx";
+import { LoginAdmin } from "./pages/UserAdminPages/LoginAdmin.jsx";
+import { SignupAdmin } from "./pages/UserAdminPages/SignupAdmin.jsx";
+import { UserProfile } from "./pages/UserPages/UserProfile.jsx";
+import { UserSettings } from "./pages/UserPages/UserSettings.jsx";
+import { UserPassword } from "./pages/UserPages/UserChangePassword.jsx";
+import { LogOut } from "./component/UserComp/LogOut.jsx";
+
 import injectContext from "./store/appContext";
 
-import { Navbar } from "./component/navbar";
+import { Navbar } from "./component/navbar.jsx";
 import { Footer } from "./component/footer";
 
 //create your first component
 const Layout = () => {
-    //the basename is used when your project is published in a subdirectory and not in the root of the domain
-    // you can set the basename on the .env file located at the root of this project, E.g: BASENAME=/react-hello-webapp/
-    const basename = process.env.BASENAME || "";
+  //the basename is used when your project is published in a subdirectory and not in the root of the domain
+  // you can set the basename on the .env file located at the root of this project, E.g: BASENAME=/react-hello-webapp/
+  const basename = process.env.BASENAME || "";
 
-    return (
-        <div>
-            <BrowserRouter basename={basename}>
-                <ScrollToTop>
-                    <Navbar />
-                    <Routes>
-                        <Route element={<Home />} path="/" />
-                        <Route element={<Demo />} path="/demo" />
-                        <Route element={<Single />} path="/single/:theid" />
-                        <Route element={<Signup />} path="/signup" />
-                        <Route element={<Login />} path="/login" />
-                        <Route element={<Products />} path="/products" />
-                        <Route element={<h1>Not found!</h1>} />
-                    </Routes>
-                    <Footer />
-                </ScrollToTop>
-            </BrowserRouter>
-        </div>
-    );
+  return (
+    <div>
+      <BrowserRouter basename={basename}>
+        <ScrollToTop>
+          <Navbar />
+          <Routes>
+            <Route element={<Home />} path="/" />
+            <Route element={<Demo />} path="/demo" />
+            <Route element={<Single />} path="/single/:theid" />
+            <Route element={<Signup />} path="/signup" />
+            <Route element={<Login />} path="/login" />
+            <Route element={<Products />} path="/products" />
+            <Route element={<LoginAdmin />} path="/LoginAdmin" />
+            <Route element={<SignupAdmin />} path="/signupAdmin" />
+            <Route element={<SignupAdmin />} path="/signupAdmin" />
+            <Route element={<UserProfile />} path="/userProfile/:theid" />
+            <Route element={<UserSettings />} path="/userProfile/:theid/settings" />
+            <Route element={<UserPassword />} path="/userProfile/:theid/change_password" />
+            <Route element={<LogOut />} path="/logout" />
+            <Route element={<h1>Not found!</h1>} />
+          </Routes>
+          <Footer />
+        </ScrollToTop>
+      </BrowserRouter>
+    </div>
+  );
 };
 
 export default injectContext(Layout);
