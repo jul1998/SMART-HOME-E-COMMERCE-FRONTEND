@@ -4,13 +4,10 @@ import { Link } from "react-router-dom";
 import smartHomeImg from "../../img/LOGOTIPO.png";
 import { Context } from "../store/appContext";
 export const Navbar = () => {
-  function showToken() {
-    if (localStorage.getItem("token")) {
-      return true;
-    } else {
-      return false;
-    }
-  }
+
+  const { store, actions } = useContext(Context);
+  let isToken = actions.showToken() //If token exists, then signup button will not be available
+  //else it will appear in navbar
 
   return (
     <nav className="navbar navbar-expand-lg bg-dark" id="navbarcontent1">
@@ -33,7 +30,7 @@ export const Navbar = () => {
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
               {" "}
-              {!showToken() ? (
+              {!isToken ? (
                 <Link to="/signup">
                   <button className="btn btn-primary">Sign Up</button>
                 </Link>
