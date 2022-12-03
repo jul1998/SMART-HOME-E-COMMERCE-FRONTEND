@@ -18,7 +18,7 @@ import { LogOut } from "./component/UserComp/LogOut.jsx";
 import injectContext from "./store/appContext";
 
 import { Navbar } from "./component/navbar.jsx";
-import { Footer } from "./component/footer";
+import { Footer } from "./component/footer.jsx";
 
 //create your first component
 const Layout = () => {
