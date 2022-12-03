@@ -21,7 +21,6 @@ function Login() {
 
 
 function handleChange(event){
-console.log("handle func")
 const {name,value}= event.target //Destructurar data de formData
 setFormData(prevFormData =>{
     return{

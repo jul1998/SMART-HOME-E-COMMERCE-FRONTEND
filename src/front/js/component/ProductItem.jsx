@@ -5,11 +5,30 @@ import { Context } from "../store/appContext";
 
 function ProductItem({product}) {
 
+  const { store, actions } = useContext(Context);
+  let isToken = actions.showToken() 
+
   //Esto le da formato a cualquier interger para aparecer como moneda
   const priceDisplay = product.precio.toLocaleString("en-US", {
     style: "currency",
     currency: "USD",
   });
+
+  let userId = localStorage.getItem("user_id")
+  const addToFav = async ()=> {
+    console.log(userId, product.id)
+    let response = await actions.genericFetchProtected(`user/${userId}/add_to_favorite/product/${product.id}`,"POST")
+    let jsonRes = await response.json()
+    console.log(jsonRes)
+
+  }
+
+  const showFavButton = isToken?
+  <button onClick={()=>addToFav()} type="button" className="btn btn-outline-info">Add to favorites</button>:
+  <button type="button" className="btn btn-outline-info">Login to add product to favorites</button>
+
+
+
 
   return (
     <div className="product_list_container">
@@ -22,7 +41,7 @@ function ProductItem({product}) {
                 <p className="card-text">Estado: {product.estado}</p>
                 <p className="card-text">Id: {product.id}</p>
                 <p className="card-text">Precio: {priceDisplay}</p>
-                <p className="card-text"><i class="fa-thin fa-heart"></i></p>
+                {showFavButton}
               </div>
             </div>
           </div>
