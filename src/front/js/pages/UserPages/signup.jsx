@@ -2,11 +2,12 @@ import React, { useState, useContext } from "react";
 import "../../../styles/signup.css";
 import Swal from 'sweetalert2'
 import { Context } from "../../store/appContext"
-
+import { useNavigate } from "react-router-dom";
 
 function Signup() {
 
   const { store, actions } = useContext(Context)
+  const navigate = useNavigate()
 
   const [formData, setFormData] = useState({
     fullname: "",
@@ -57,6 +58,7 @@ function Signup() {
         title: 'Great!',
         text: `${jsonResponse.msg}`,
       })
+      return navigate("/login")
 
     } else {
       Swal.fire({
