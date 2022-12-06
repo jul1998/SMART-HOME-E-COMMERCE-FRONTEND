@@ -29,12 +29,12 @@ export const Navbar = () => {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              {" "}
+
               {!isToken ? (
                 <Link to="/signup">
                   <button className="btn btn-primary">Sign Up</button>
                 </Link>
-              ) : null}
+              ) :null}
             </li>
            
           </ul>
