@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect} from "react";
 import "../../../styles/userProfile.css";
-import Swal from "sweetalert2";
+
 import { Context } from "../../store/appContext";
 import { Link, useParams } from "react-router-dom";
 
@@ -25,7 +25,6 @@ function UserProfile() {
 
 const displayImg = userInfo.img_profile? userInfo.img_profile: "https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png?20150327203541"
 
-  console.log(userInfo)
 
   return (
     <div className="userProfile">

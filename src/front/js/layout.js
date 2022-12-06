@@ -12,12 +12,13 @@ import { LoginAdmin } from "./pages/UserAdminPages/LoginAdmin.jsx";
 import { SignupAdmin } from "./pages/UserAdminPages/SignupAdmin.jsx";
 import { UserProfile } from "./pages/UserPages/UserProfile.jsx";
 import { UserSettings } from "./pages/UserPages/UserSettings.jsx";
+import { UserPassword } from "./pages/UserPages/UserChangePassword.jsx";
 import { LogOut } from "./component/UserComp/LogOut.jsx";
 
 import injectContext from "./store/appContext";
 
 import { Navbar } from "./component/navbar.jsx";
-import { Footer } from "./component/footer";
+import { Footer } from "./component/footer.jsx";
 
 //create your first component
 const Layout = () => {
@@ -42,6 +43,7 @@ const Layout = () => {
             <Route element={<SignupAdmin />} path="/signupAdmin" />
             <Route element={<UserProfile />} path="/userProfile/:theid" />
             <Route element={<UserSettings />} path="/userProfile/:theid/settings" />
+            <Route element={<UserPassword />} path="/userProfile/:theid/change_password" />
             <Route element={<LogOut />} path="/logout" />
             <Route element={<h1>Not found!</h1>} />
           </Routes>

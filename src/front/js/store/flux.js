@@ -72,7 +72,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				return response
 			},
-			
+			showToken: () => {
+				if (localStorage.getItem("token")) {
+				  return true;
+				} else {
+				  return false;
+				}
+			  }
+
 
 		}
 	};

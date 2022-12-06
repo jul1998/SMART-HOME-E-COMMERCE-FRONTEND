@@ -24,9 +24,9 @@ function Products() {
 
   return (
     <div>
-      <div class="container text-center">
-        <div class="row">
-          <div class="col">{displayProducts}</div>
+      <div className="container text-center">
+        <div className="row">
+          <div className="col">{displayProducts}</div>
         </div>
       </div>
     </div>

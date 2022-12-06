@@ -1,7 +1,4 @@
-import React, { useState, useContext } from "react";
-
-
-
+import React, { useState, useContext, useReducer } from "react";
 export const userStore = {
     user: {
         "isLogOut": "false"
@@ -21,14 +18,17 @@ export function userActions(getStore, getActions, setStore) {
 
             let responseJson = await response.json()
             localStorage.setItem("token", responseJson.token)
-            setStore({ ...store, token: responseJson.token })
-            return { response, responseJson }
+            localStorage.setItem("user_id", responseJson.user_id)
+            //localStorage.setItem("items", JSON.stringify( {"token":responseJson.token, "item":"whatever"}))
+            setStore({...store,token:responseJson.token, user_id:responseJson.user_id})
+            return {response,responseJson}
         },
+
         genericFetchProtected: async (endpoint, method = "GET", data = undefined) => {
             const store = getStore()
             const storeToken = store.token //This token is stored in store
             const localStorageToken = localStorage.getItem("token") //This is the same token store in local Storage
-            console.log(localStorageToken)
+            //console.log(localStorageToken)
             let BACKEND_URL = process.env.BACKEND_URL
             let response = await fetch(BACKEND_URL + endpoint, {
                 method: method,
@@ -38,21 +38,22 @@ export function userActions(getStore, getActions, setStore) {
                     "Authorization": "Bearer " + localStorageToken
                 }
             })
-
+            
             return response
         },
         logoutFetch: async () => {
             const store = getStore()
             let response = await getActions().genericFetchProtected("logout")
             localStorage.setItem("token", "")
-            setStore({ ...store, token: "" })
+            localStorage.setItem("user_id", "")
+            setStore({...store,token:""})
             return response
 
         },
-        isLogOut: () => {
-            const [isLogOut, setLogOut] = useState(false)
-            return (isLogOut)
-        }
+        isLogOut: ()=>{
+            const [isLogOut, setLogOut]= useState(false)
+            return(isLogOut)
+       }
 
     }
 }
