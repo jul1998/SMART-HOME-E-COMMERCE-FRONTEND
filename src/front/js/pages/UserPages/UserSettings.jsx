@@ -85,15 +85,14 @@ function UserSettings() {
       <nav>
         <ul className="nav nav-tabs">
           <li className="nav-item">
-          <Link className="nav-link" to={`/userProfile/${params.theid}/settings`}>Change personal info</Link>
+          <Link className="nav-link" to={`/userProfile/${params.theid}/settings`}><button type="button" class="btn btn-dark">Change personal info</button></Link>
           </li>
           <li className="nav-item">
-            <Link className="nav-link" to={`/userProfile/${params.theid}/change_password`}>Change password</Link>
+            <Link className="nav-link" to={`/userProfile/${params.theid}/change_password`}><button type="button" class="btn btn-dark">Change password</button></Link>
           </li>
-          <li className="nav-item">
-            <a className="nav-link" href="#">
-              Link
-            </a>
+          <li className="nav-item ">
+            <Link to={`/userProfile/${params.theid}/delete_account`} className="nav-link"><button type="button" class="btn btn-danger">Delete account</button></Link>
+
           </li>
           <li className="nav-item">
             <a className="nav-link disabled">Disabled</a>
