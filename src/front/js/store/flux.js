@@ -21,6 +21,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			...userStore,
 			...userAdminStore,
 			...paypalStore
+			
 		},
 		actions: {
 			// Use getActions to call a function within a fuction

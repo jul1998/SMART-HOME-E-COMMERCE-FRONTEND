@@ -20,8 +20,8 @@ export function userActions(getStore, getActions, setStore) {
             localStorage.setItem("token", responseJson.token)
             localStorage.setItem("user_id", responseJson.user_id)
             //localStorage.setItem("items", JSON.stringify( {"token":responseJson.token, "item":"whatever"}))
-            setStore({...store,token:responseJson.token, user_id:responseJson.user_id})
-            return {response,responseJson}
+            setStore({ ...store, token: responseJson.token, user_id: responseJson.user_id })
+            return { response, responseJson }
         },
 
         genericFetchProtected: async (endpoint, method = "GET", data = undefined) => {
@@ -38,7 +38,7 @@ export function userActions(getStore, getActions, setStore) {
                     "Authorization": "Bearer " + localStorageToken
                 }
             })
-            
+
             return response
         },
         logoutFetch: async () => {
@@ -46,14 +46,23 @@ export function userActions(getStore, getActions, setStore) {
             let response = await getActions().genericFetchProtected("logout")
             localStorage.setItem("token", "")
             localStorage.setItem("user_id", "")
-            setStore({...store,token:""})
+            setStore({ ...store, token: "" })
             return response
 
         },
-        isLogOut: ()=>{
-            const [isLogOut, setLogOut]= useState(false)
-            return(isLogOut)
-       }
+        isLogOut: () => {
+            const [isLogOut, setLogOut] = useState(false)
+            return (isLogOut)
+        },
 
+        carritoCompras: async () => {
+            const store = getStore()
+            let response = await getActions().genericFetchProtected("carritoCompras")
+            let responseJson = await response.json()
+            setStore({ ...store, carritoCompras: responseJson })
+            console.log(responseJson)
+            return response
+
+        },
     }
 }

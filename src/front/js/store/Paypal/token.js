@@ -29,13 +29,30 @@ export function paypalActions(getStore, getActions, setStore) {
             let promise = await response.json()
             const store = getStore()
             setStore({ ...store, tokenPaypal: promise.access_token})
-            
         },
 
 
-        payment: async (endpoint, method = "GET", data = undefined) => {
+        create_order: async (endpoint, method = "GET", data = undefined) => {
             const store = getStore()
             const storeToken = store.tokenPaypal
+            const localStorageToken = localStorage.getItem("token") 
+            const carritoCompras = store.carritoCompras
+            let body = {
+                intent: 'CAPTURE',
+                purchase_units: [{
+                    amount: {
+                        currency_code: "USD",
+                        value: ""
+                    }
+                }],
+                application_context: {
+                    brand_name: "Smart Home Ecommerce",
+                    landing_page: "LOGIN",
+                    user_actions: "PAY_NOW",
+                    return_url: "",
+                    cancel_url: ""
+                }
+            }
             let response = await fetch(PAYPAL_API_TOKEN_URL, {
                 method: method,
                 headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer' + 'A21AAIsEFQol0sX-IPEAIg8LF0A1RjUGw4k_l8cRjzZia4y09QlNyU4Z_WxvsqGU0_c0iJBAMgrcLCE9QvajQ8trzCV_b60IA'},
