@@ -57,12 +57,11 @@ export function userActions(getStore, getActions, setStore) {
 
         carritoCompras: async () => {
             const store = getStore()
-            let response = await getActions().genericFetchProtected("carritoCompras")
+            let response = await getActions().genericFetch("user/1/carritoCompras")
             let responseJson = await response.json()
             setStore({ ...store, carritoCompras: responseJson })
             console.log(responseJson)
-            return response
-
-        },
+            return responseJson
+        }
     }
 }

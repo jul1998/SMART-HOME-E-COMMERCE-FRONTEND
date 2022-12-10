@@ -3,6 +3,8 @@ import "../../styles/navbar.css";
 import { Link } from "react-router-dom";
 import smartHomeImg from "../../img/LOGOTIPO.png";
 import { Context } from "../store/appContext";
+import { Total } from "./Productos/Comprar.jsx";
+
 export const Navbar = () => {
 
   const { store, actions } = useContext(Context);
@@ -36,79 +38,82 @@ export const Navbar = () => {
                 </Link>
               ) : null}
             </li>
-           
+
           </ul>
 
           <ul className="d-flex nav-item" id="dropdowns">
-              <li className="nav-item dropdown">
-                <a
-                  className="nav-link dropdown-toggle"
-                  href="#"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  <i className="far fa-user nav-item"></i>
-                </a>
-                <ul className="dropdown-menu">
-                  <li>
-                    <Link to="/login" className="dropdown-item">
-                      Login
-                    </Link>
-                  </li>
-                  <li>
-                    <hr className="dropdown-divider" />
-                  </li>
-                  <li>
-                    <Link to="/userProfile/:theid/settings" className="dropdown-item">
-                      Configuracion
-                    </Link>
-                  </li>
-                  <li>
-                    <hr className="dropdown-divider" />
-                  </li>
-                  <li>
-                    <Link to="/logout" className="dropdown-item">
-                      Logout
-                    </Link>
-                  </li>
-                </ul>
-              </li>
-              <li className="nav-item dropdown">
-                <a
-                  className="nav-link dropdown-toggle"
-                  href="#"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  <i className="fas fa-shopping-cart"></i>
-                </a>
-                <ul className="dropdown-menu">
-                  <li>
-                    <Link to="/products" className="dropdown-item">
-                      Productos
-                    </Link>
-                  </li>
-                  <li>
-                    <hr className="dropdown-divider" />
-                  </li>
-                  <li>
-                    <a className="dropdown-item" href="#">
-                      Another action
-                    </a>
-                  </li>
-                  <li>
-                    <hr className="dropdown-divider" />
-                  </li>
-                  <li>
-                    <a className="dropdown-item" href="#">
-                      Eliminar carrito
-                    </a>
-                  </li>
-                </ul>
-              </li>
-            </ul>
+            <li className="nav-item dropdown">
+              <a
+                className="nav-link dropdown-toggle"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <i className="far fa-user nav-item"></i>
+              </a>
+              <ul className="dropdown-menu">
+                <li>
+                  <Link to="/login" className="dropdown-item" onClick={() => {
+                    let response = actions.carritoCompras()
+                  }}>
+                    Login
+                  </Link>
+                  <Total />
+                </li>
+                <li>
+                  <hr className="dropdown-divider" />
+                </li>
+                <li>
+                  <Link to="/userProfile/:theid/settings" className="dropdown-item">
+                    Configuracion
+                  </Link>
+                </li>
+                <li>
+                  <hr className="dropdown-divider" />
+                </li>
+                <li>
+                  <Link to="/logout" className="dropdown-item">
+                    Logout
+                  </Link>
+                </li>
+              </ul>
+            </li>
+            <li className="nav-item dropdown">
+              <a
+                className="nav-link dropdown-toggle"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <i className="fas fa-shopping-cart"></i>
+              </a>
+              <ul className="dropdown-menu">
+                <li>
+                  <Link to="/products" className="dropdown-item">
+                    Productos
+                  </Link>
+                </li>
+                <li>
+                  <hr className="dropdown-divider" />
+                </li>
+                <li>
+                  <a className="dropdown-item" href="#">
+                    Another action
+                  </a>
+                </li>
+                <li>
+                  <hr className="dropdown-divider" />
+                </li>
+                <li>
+                  <a className="dropdown-item" href="#">
+                    Eliminar carrito
+                  </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
           <form className="d-flex" role="search">
             <input
               className="form-control me-2"
@@ -116,7 +121,7 @@ export const Navbar = () => {
               placeholder="Search"
               aria-label="Search"
             />
-            
+
           </form>
         </div>
       </div>

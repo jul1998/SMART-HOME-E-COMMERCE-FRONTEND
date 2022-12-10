@@ -7,6 +7,7 @@ export const paypalStore = {
 
 export function paypalActions(getStore, getActions, setStore) {
     let PAYPAL_API_TOKEN_URL = process.env.PAYPAL_API_TOKEN_URL
+    let PAYPAL_API_PURCHASE_URL = process.env.PAYPAL_API_PURCHASE_URL
 
     let obj = {
         'grant_type': 'client_credentials'
@@ -28,40 +29,37 @@ export function paypalActions(getStore, getActions, setStore) {
             })
             let promise = await response.json()
             const store = getStore()
-            setStore({ ...store, tokenPaypal: promise.access_token})
+            setStore({ ...store, tokenPaypal: promise.access_token })
+            console.log(promise.access_token)
+            return promise
         },
 
 
-        create_order: async (endpoint, method = "GET", data = undefined) => {
+        createAnOrder: async (method = "POST") => {
             const store = getStore()
-            const storeToken = store.tokenPaypal
-            const localStorageToken = localStorage.getItem("token") 
-            const carritoCompras = store.carritoCompras
-            let body = {
-                intent: 'CAPTURE',
-                purchase_units: [{
-                    amount: {
-                        currency_code: "USD",
-                        value: ""
-                    }
-                }],
-                application_context: {
-                    brand_name: "Smart Home Ecommerce",
-                    landing_page: "LOGIN",
-                    user_actions: "PAY_NOW",
-                    return_url: "",
-                    cancel_url: ""
-                }
-            }
-            let response = await fetch(PAYPAL_API_TOKEN_URL, {
+            let response = await fetch(PAYPAL_API_PURCHASE_URL, {
                 method: method,
-                headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer' + 'A21AAIsEFQol0sX-IPEAIg8LF0A1RjUGw4k_l8cRjzZia4y09QlNyU4Z_WxvsqGU0_c0iJBAMgrcLCE9QvajQ8trzCV_b60IA'},
-                body: JSON.stringify()
+                headers: { 'Content-Type': 'application/json; charset=UTF-8', 'Authorization': 'Basic ' + btoa(access.Username + ':' + access.Password) },
+                body: JSON.stringify({
+                    "intent": "CAPTURE",
+                    "application_context": {
+                        "return_url": "https://example.com",
+                        "cancel_url": "https://example.com"
+                    },
+                    "purchase_units": [
+                        {
+                            "reference_id": "test",
+                            "amount": {
+                                "currency_code": "USD",
+                                "value": "350"
+                            }
+                        }
+                    ]
+                })
             })
             let promise = await response.json()
-            
-            
+            console.log(promise)
         }
-        
-    }   
+
+    }
 }
