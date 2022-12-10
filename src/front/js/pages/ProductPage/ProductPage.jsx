@@ -29,7 +29,8 @@ function Products() {
     <div>
       <div className="container-fluid text-center">
         <div className="row">
-          <div className="col-12 col-md-4">{displayProducts}</div>
+          {displayProducts}
+          
         </div>
       </div>
     </div>
