@@ -11,8 +11,11 @@ function Products() {
   useEffect(() => {
     async function fetch() {
       let response = await actions.genericFetch("products_list");
+      console.log(response)
       let jsonResponse = await response.json();
+      console.log(jsonResponse)
       setProducts(jsonResponse);
+      
     }
 
     fetch();
@@ -24,9 +27,10 @@ function Products() {
 
   return (
     <div>
-      <div className="container text-center">
+      <div className="container-fluid text-center">
         <div className="row">
-          <div className="col">{displayProducts}</div>
+          {displayProducts}
+          
         </div>
       </div>
     </div>
