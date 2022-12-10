@@ -14,6 +14,7 @@ import { UserProfile } from "./pages/UserPages/UserProfile.jsx";
 import { UserSettings } from "./pages/UserPages/UserSettings.jsx";
 import { UserPassword } from "./pages/UserPages/UserChangePassword.jsx";
 import { LogOut } from "./component/UserComp/LogOut.jsx";
+import PaypalTest from "./pages/paypaltest.jsx";
 
 import injectContext from "./store/appContext";
 
@@ -44,6 +45,7 @@ const Layout = () => {
             <Route element={<UserProfile />} path="/userProfile/:theid" />
             <Route element={<UserSettings />} path="/userProfile/:theid/settings" />
             <Route element={<UserPassword />} path="/userProfile/:theid/change_password" />
+            <Route element={<PaypalTest />} path="/paypaltest" />
             <Route element={<LogOut />} path="/logout" />
             <Route element={<h1>Not found!</h1>} />
           </Routes>
