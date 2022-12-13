@@ -7,6 +7,14 @@ function ProductDetailPageComp({ product }) {
   const { store, actions } = useContext(Context);
   const [itempQuantity, setItempQuantity] = useState(0);
 
+  let floatProduct = parseFloat(product.price)//Converts price into number
+
+  //Esto le da formato a cualquier interger para aparecer como moneda
+  const priceDisplay = floatProduct.toLocaleString("en-US", {
+    style: "currency",
+    currency: "USD",
+  });
+
   function incrementQuantity() {
     setItempQuantity((prevQuant) => prevQuant + 1);
   }
@@ -30,11 +38,15 @@ function ProductDetailPageComp({ product }) {
               alt="..."
             />
           </div>
-          <div className="col-sm-5 col-md-6 my-5">
+          <div  className="col-sm-5 col-md-6 my-5">
             <h1>{product.name}</h1>
             <p className="col-md-4">Reviews</p>
-            <h2 className="col-md-4">${product.price}</h2>
+
+            <h2 className="col-md-4">{priceDisplay}</h2>
             <div className="row">
+            <div style={{border: '1px solid gray'}}>
+
+          </div>
               <div className="col-sm-6 col-md-5 col-lg-6">Quantity</div>
 
               {/* This line forces columns to break*/}
@@ -65,17 +77,24 @@ function ProductDetailPageComp({ product }) {
 
               <div class="row my-5">
                 <div class="col-sm-6 col-md-5 col-lg-6">
+
                 </div>
               </div>
 
-              <div className="col-sm-6 col-md-5 offset-md-2 col-lg-6 offset-lg-0"></div>
             </div>
           </div>
         </div>
         <div className="row">
-          <div className="col-sm-6 col-md-5 col-lg-6"></div>
+          <div className="col-sm-6 col-md-5 col-lg-6">
+            asdad
+          </div>
           <div className="col-sm-6 col-md-5 offset-md-2 col-lg-6 offset-lg-0">
-            .col-sm-6 .col-md-5 .offset-md-2 .col-lg-6 .offset-lg-0
+            <ul  className="product--description">
+            <li  ><span>Span list</span></li>
+            <li  ><span>Span list</span></li>
+            <li  ><span>Span list</span></li>
+            <li  ><span>Span list</span></li>
+            </ul>
           </div>
         </div>
       </div>
