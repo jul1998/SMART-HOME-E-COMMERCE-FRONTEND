@@ -32,7 +32,7 @@ export const Navbar = () => {
                 <Link to="/signup">
                   <button className="btn btn-primary">Sign Up</button>
                 </Link>
-              ) : null}
+              ) :null}
             </li>
           </ul>
 

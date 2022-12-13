@@ -70,9 +70,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 				return response
 			},
 			showToken: () => {
-				if (localStorage.getItem("token")) {
+				let storageToken =localStorage.getItem("token")
+				if (storageToken) {
 				  return true;
-				} else {
+				} else if(storageToken === ""){
+					return false
+				} else{
 				  return false;
 				}
 			  }
