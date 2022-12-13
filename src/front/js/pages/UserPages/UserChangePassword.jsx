@@ -78,14 +78,12 @@ function UserPassword() {
       <nav>
         <ul className="nav nav-tabs">
           <li className="nav-item">
-          <Link className="nav-link" to={`/userProfile/${params.theid}/settings`}>Change personal info</Link>
+          <Link className="nav-link" to={`/userProfile/${params.theid}/settings`}><button type="button" class="btn btn-dark">Change personal info</button></Link>
           </li>
           <li className="nav-item">
-            <Link className="nav-link" to={`/userProfile/${params.theid}/change_password`}>Change password</Link>
+            <Link className="nav-link" to={`/userProfile/${params.theid}/change_password`}><button type="button" class="btn btn-dark">Change password</button></Link>
           </li>
-          <li className="nav-item ">
-            <a className="nav-link ">Delete account</a>
-          </li>
+    
         </ul>
       </nav>
       <h2>In this section, you can change your password</h2>
