@@ -6,10 +6,13 @@ import { Context } from "../../store/appContext";
 function ProductItem({ product }) {
 
   const { store, actions } = useContext(Context);
+  useEffect(() => {
+    console.log(product)
+  }, [])
   let isToken = actions.showToken()
 
   //Esto le da formato a cualquier interger para aparecer como moneda
-  const priceDisplay = product.precio.toLocaleString("en-US", {
+  const priceDisplay = product.price.toLocaleString("en-US", {
     style: "currency",
     currency: "USD",
   });
@@ -40,7 +43,7 @@ function ProductItem({ product }) {
             <h5 className="card-title">{product.name}</h5>
             <p className="card-text">Estado: {product.estado}</p>
             <p className="card-text">Id: {product.id}</p>
-            <p className="card-text">Precio: {priceDisplay}</p>
+            <p className="card-text">Precio: {product.price}</p>
             {showFavButton}
           </div>
         </div>

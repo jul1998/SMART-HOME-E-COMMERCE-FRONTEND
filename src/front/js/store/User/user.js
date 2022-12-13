@@ -55,9 +55,9 @@ export function userActions(getStore, getActions, setStore) {
             return (isLogOut)
         },
 
-        carritoCompras: async () => {
+        carritoCompras: async (user_id) => {
             const store = getStore()
-            let response = await getActions().genericFetch("user/1/carritoCompras")
+            let response = await getActions().genericFetchProtected(`user/${user_id}/carritoCompras`)
             let responseJson = await response.json()
             setStore({ ...store, carritoCompras: responseJson })
             console.log(responseJson)

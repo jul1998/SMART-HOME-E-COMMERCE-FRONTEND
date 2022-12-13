@@ -59,7 +59,6 @@ export const Navbar = () => {
                   }}>
                     Login
                   </Link>
-                  <Total />
                 </li>
                 <li>
                   <hr className="dropdown-divider" />
@@ -91,8 +90,8 @@ export const Navbar = () => {
               </a>
               <ul className="dropdown-menu">
                 <li>
-                  <Link to="/products" className="dropdown-item">
-                    Productos
+                  <Link to={`/user/${store.user_id}/carritoCompras`} className="dropdown-item">
+                    Carrito
                   </Link>
                 </li>
                 <li>

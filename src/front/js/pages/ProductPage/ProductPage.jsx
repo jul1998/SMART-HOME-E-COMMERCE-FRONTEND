@@ -3,7 +3,7 @@ import "../../../styles/products.css";
 import Swal from "sweetalert2";
 import { Context } from "../../store/appContext";
 import { ProductItem } from "../../component/Productos/ProductItem.jsx";
-import { ProductItem } from "../../component/ProductComp/ProductItem.jsx";
+/*import { ProductItem } from "../../component/ProductComp/ProductItem.jsx";*/
 
 function Products() {
   const { store, actions } = useContext(Context);
