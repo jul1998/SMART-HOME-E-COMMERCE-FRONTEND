@@ -10,9 +10,10 @@ function ProductItem({ product }) {
   let isToken = actions.showToken();
   const navigate = useNavigate()
 
+  let floatProduct = parseFloat(product.price)//Converts price into number
 
   //Esto le da formato a cualquier interger para aparecer como moneda
-  const priceDisplay = product.price.toLocaleString("en-US", {
+  const priceDisplay = floatProduct.toLocaleString("en-US", {
     style: "currency",
     currency: "USD",
   });

@@ -134,3 +134,10 @@ input:disabled{
     min-width: 196px;
   }
 }
+
+
+.product--description span{
+    position: relative;
+    left: -14em;
+    color: red;
+}
