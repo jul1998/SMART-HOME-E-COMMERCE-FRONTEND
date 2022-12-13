@@ -48,7 +48,7 @@ function CarritoCompras() {
     <div>
       <div className="container-fluid text-center">
         <div className="row">{(carrito && carrito.length > 0) ? displayCarrito : "null"}</div>
-        <div>{total()}</div>
+        <div>{}</div>
       </div>
     </div>
 
