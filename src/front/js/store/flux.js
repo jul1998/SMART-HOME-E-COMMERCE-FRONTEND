@@ -56,7 +56,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore({ demo: demo });
 			},
 			genericFetch: async (endpoint, method = "GET", data = undefined) => {
-
+					console.log(endpoint, data)
 				let BACKEND_URL = process.env.BACKEND_URL
 				let response = await fetch(BACKEND_URL + endpoint, {
 					method: method,

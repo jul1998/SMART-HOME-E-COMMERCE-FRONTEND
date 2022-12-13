@@ -2,7 +2,7 @@ import React, { useState, useContext, useEffect } from "react";
 import "../../../styles/products.css";
 import Swal from "sweetalert2";
 import { Context } from "../../store/appContext";
-import { ProductItem } from "../../component/ProductItem.jsx";
+import { ProductItem } from "../../component/ProductComp/ProductItem.jsx";
 
 function Products() {
   const { store, actions } = useContext(Context);
@@ -11,7 +11,9 @@ function Products() {
   useEffect(() => {
     async function fetch() {
       let response = await actions.genericFetch("products_list");
+      console.log(response);
       let jsonResponse = await response.json();
+      console.log(jsonResponse);
       setProducts(jsonResponse);
     }
 
@@ -24,10 +26,8 @@ function Products() {
 
   return (
     <div>
-      <div className="container text-center">
-        <div className="row">
-          <div className="col">{displayProducts}</div>
-        </div>
+      <div className="container-fluid text-center">
+        <div className="row">{displayProducts}</div>
       </div>
     </div>
   );
