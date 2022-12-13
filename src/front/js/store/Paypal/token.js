@@ -30,8 +30,6 @@ export function paypalActions(getStore, getActions, setStore) {
             let promise = await response.json()
             const store = getStore()
             setStore({ ...store, tokenPaypal: promise.access_token })
-            console.log(promise.access_token)
-            return promise
         },
 
 
@@ -39,7 +37,8 @@ export function paypalActions(getStore, getActions, setStore) {
             const store = getStore()
             let response = await fetch(PAYPAL_API_PURCHASE_URL, {
                 method: method,
-                headers: { 'Content-Type': 'application/json; charset=UTF-8', 'Authorization': 'Basic ' + btoa(access.Username + ':' + access.Password) },
+                /*'Authorization': 'Bearer ' + store.tokenPaypal*/
+                headers: { 'Content-Type': 'application/json; charset=UTF-8', 'Authorization': 'Bearer ' + store.tokenPaypal },
                 body: JSON.stringify({
                     "intent": "CAPTURE",
                     "application_context": {
@@ -51,7 +50,7 @@ export function paypalActions(getStore, getActions, setStore) {
                             "reference_id": "test",
                             "amount": {
                                 "currency_code": "USD",
-                                "value": "350"
+                                "value": "100.00"
                             }
                         }
                     ]

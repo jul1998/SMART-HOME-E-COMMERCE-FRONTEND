@@ -19,7 +19,6 @@ function Total() {
         suma = suma.toString()
         console.log(suma)
         let access = await actions.getAccessToken()
-        console.log(access.access_token)
         let linc = await actions.createAnOrder(suma)
         console.log(linc)
         
