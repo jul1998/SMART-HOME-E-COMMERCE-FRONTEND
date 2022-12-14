@@ -39,7 +39,7 @@ function ProductItem({ product }) {
       Add to favorites
     </button>
   ) : (
-    <button type="button" className="btn btn-outline-info">
+    <button onClick={()=> navigate("/login")} type="button" className="btn btn-outline-info">
       Login to add product to favorites
     </button>
   );

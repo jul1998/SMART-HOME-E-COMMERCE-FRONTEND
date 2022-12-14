@@ -3,7 +3,7 @@ import React, { useState, useContext, useEffect } from "react";
 import "../../../styles/products.css";
 import { Context } from "../../store/appContext";
 
-function ProductDetailPageComp({ product }) {
+function ProductDetailPageComp({ product, description }) {
   const { store, actions } = useContext(Context);
   const [itempQuantity, setItempQuantity] = useState(0);
 
@@ -27,15 +27,19 @@ function ProductDetailPageComp({ product }) {
     }
   }
 
+  let displayDescription = description.map(item=>{
+    return (<li className="list-group-item"><span>{item.description}</span></li>)
+  })
+
   return (
     <div>
       <div className="container text-center">
         <div className="row">
           <div className="col-sm-5 col-md-6 my-5">
             <img
-              src="https://images.unsplash.com/photo-1666214280250-41f16ba24a26?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
+              src={product.img?product.img:"https://images.unsplash.com/photo-1633078654544-61b3455b9161?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8NDA0JTIwZXJyb3J8ZW58MHx8MHx8&auto=format&fit=crop&w=600&q=60"}
               className="img-fluid"
-              alt="..."
+              alt="image"
             />
           </div>
           <div  className="col-sm-5 col-md-6 my-5">
@@ -77,7 +81,7 @@ function ProductDetailPageComp({ product }) {
 
               <div class="row my-5">
                 <div class="col-sm-6 col-md-5 col-lg-6">
-
+                  {/* This line displays code quantity*/}
                 </div>
               </div>
 
@@ -86,14 +90,12 @@ function ProductDetailPageComp({ product }) {
         </div>
         <div className="row">
           <div className="col-sm-6 col-md-5 col-lg-6">
-            asdad
+              {/* This line displays code below img*/}
+              
           </div>
           <div className="col-sm-6 col-md-5 offset-md-2 col-lg-6 offset-lg-0">
-            <ul  className="product--description">
-            <li  ><span>Span list</span></li>
-            <li  ><span>Span list</span></li>
-            <li  ><span>Span list</span></li>
-            <li  ><span>Span list</span></li>
+            <ul  className="list-group list-group-flush">
+            {displayDescription}
             </ul>
           </div>
         </div>
