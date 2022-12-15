@@ -26,7 +26,7 @@ html, body {
       align-items: center;
       text-align: center;
       min-height: 100vh;
-      background-color: #152733;
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.com/svgjs' width='1920' height='1080' preserveAspectRatio='none' viewBox='0 0 1920 1080'%3e%3cg mask='url(%26quot%3b%23SvgjsMask1064%26quot%3b)' fill='none'%3e%3crect width='1920' height='1080' x='0' y='0' fill='%230e2a47'%3e%3c/rect%3e%3cpath d='M 0%2c188 C 96%2c204.6 288%2c277.6 480%2c271 C 672%2c264.4 768%2c149.8 960%2c155 C 1152%2c160.2 1248%2c295.2 1440%2c297 C 1632%2c298.8 1824%2c190.6 1920%2c164L1920 1080L0 1080z' fill='%23184a7e'%3e%3c/path%3e%3cpath d='M 0%2c1001 C 128%2c915.8 384%2c598 640%2c575 C 896%2c552 1024%2c873 1280%2c886 C 1536%2c899 1792%2c689.2 1920%2c640L1920 1080L0 1080z' fill='%232264ab'%3e%3c/path%3e%3c/g%3e%3cdefs%3e%3cmask id='SvgjsMask1064'%3e%3crect width='1920' height='1080' fill='white'%3e%3c/rect%3e%3c/mask%3e%3c/defs%3e%3c/svg%3e");
 }
 
 .form-holder .form-content {
