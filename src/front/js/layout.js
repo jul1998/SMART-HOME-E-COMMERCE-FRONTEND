@@ -16,7 +16,9 @@ import { UserPassword } from "./pages/UserPages/UserChangePassword.jsx";
 import {DeleteUserAccount} from "./component/UserComp/DeleteAccount.jsx"
 import { ProductDetailPage } from "./pages/ProductPage/ProducDetailPage.jsx";
 import { LogOut } from "./component/UserComp/LogOut.jsx";
+
 import { CarritoCompras } from "./pages/ProductPage/CarritoCompras.jsx";
+
 
 import injectContext from "./store/appContext";
 
@@ -41,6 +43,7 @@ const Layout = () => {
             <Route element={<Signup />} path="/signup" />
             <Route element={<Login />} path="/login" />
             <Route element={<Products />} path="/products" />
+            <Route element={<ShowProductPageFiltered />} path="/products/filtered" />
             <Route element={<LoginAdmin />} path="/LoginAdmin" />
             <Route element={<SignupAdmin />} path="/signupAdmin" />
             <Route element={<SignupAdmin />} path="/signupAdmin" />

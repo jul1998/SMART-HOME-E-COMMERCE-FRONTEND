@@ -1,14 +1,19 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import "../../styles/navbar.css";
 import { Link } from "react-router-dom";
 import smartHomeImg from "../../img/LOGOTIPO.png";
 import { Context } from "../store/appContext";
+
+
+
 
 export const Navbar = () => {
   const { store, actions } = useContext(Context);
   let isToken = actions.showToken(); //If token exists, then signup button will not be available
   //else it will appear in navbar
 
+
+  
   return (
     <nav className="navbar navbar-expand-lg bg-dark" id="navbarcontent1">
       <div className="container-fluid">
@@ -106,6 +111,8 @@ export const Navbar = () => {
               </ul>
             </li>
           </ul>
+
+
         </div>
       </div>
     </nav >
