@@ -205,25 +205,7 @@ function Signup() {
                     </div>
                   </div>
 
-                  <div className="form-check">
-                    <input
-                      className="form-check-input"
-                      type="checkbox"
-                      value=""
-                      id="invalidCheck"
-                      name="newsLetter"
-                      onChange={handleChange}
-
-                    />
-                    <label className="form-check-label">
-                      I want to receive newsletters from this website
-                    </label>
-
-                    <div className="invalid-feedback">
-                      Please confirm that the entered data are all correct!
-                    </div>
-
-                  </div>
+                  
 
                   <div className="form-button mt-3">
                     <button id="submit" type="submit" className="btn btn-primary">
