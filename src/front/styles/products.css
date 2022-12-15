@@ -136,8 +136,3 @@ input:disabled{
 }
 
 
-.product--description span{
-    position: relative;
-    left: -14em;
-    color: red;
-}

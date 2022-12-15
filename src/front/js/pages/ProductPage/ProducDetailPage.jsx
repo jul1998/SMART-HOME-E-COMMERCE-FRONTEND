@@ -9,10 +9,10 @@ import { useParams } from "react-router-dom";
 function ProductDetailPage() {
   const { store, actions } = useContext(Context);
   const [product, setProduct] = useState([]);
+  const [description, setDescription] = useState([]);
   
     
   const params = useParams();
-  console.log(params)
 
   useEffect(()=>{
     async function fetch() {
@@ -25,10 +25,21 @@ function ProductDetailPage() {
       fetch();
   },[])
 
+  useEffect(()=>{
+    async function fetch() {
+      let response = await actions.genericFetch(
+        `product/${params.theid}/add_description`
+      );
+      let jsonRes = await response.json()
+      setDescription(jsonRes)
+    }
+    fetch();
+  },[])
+
 
   return (
     <div>
-        <ProductDetailPageComp product={product}/>
+        <ProductDetailPageComp product={product} description={description}/>
     </div>
   )
 }
