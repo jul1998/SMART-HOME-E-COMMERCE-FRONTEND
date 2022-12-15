@@ -2,7 +2,6 @@ import React, { useState, useContext, useEffect } from "react";
 import "../../../styles/products.css";
 import Swal from "sweetalert2";
 import { Context } from "../../store/appContext";
-
 import { SearchBar } from "../../component/SearchBarComp.jsx";
 
 
