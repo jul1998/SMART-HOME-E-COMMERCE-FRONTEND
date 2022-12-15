@@ -3,7 +3,6 @@ import "../../styles/navbar.css";
 import { Link } from "react-router-dom";
 import smartHomeImg from "../../img/LOGOTIPO.png";
 import { Context } from "../store/appContext";
-import { Total } from "./Productos/Comprar.jsx";
 
 export const Navbar = () => {
   const { store, actions } = useContext(Context);
@@ -181,15 +180,15 @@ export const Navbar = () => {
               </li>
             </ul>
           </li>
-        
-        <form className="d-flex" role="search">
-          <input
-            className="form-control me-2"
-            type="search"
-            placeholder="Search"
-            aria-label="Search"
-          />
-        </form>
+
+          <form className="d-flex" role="search">
+            <input
+              className="form-control me-2"
+              type="search"
+              placeholder="Search"
+              aria-label="Search"
+            />
+          </form>
         </div>
       </div>
     </nav >

@@ -38,8 +38,6 @@ export function paypalActions(getStore, getActions, setStore) {
             let store = getStore()
             let token = store.tokenPaypal
             let localStoragePaypalToken = localStorage.getItem("paypalToken")
-            console.log("funcion crear orden ejecutada")
-
             let response = await fetch(PAYPAL_API_PURCHASE_URL, {
                 method: method,
                 headers: { 'Content-Type': 'application/json; charset=UTF-8', 'Authorization': 'Bearer ' + localStoragePaypalToken, 'Connection': 'keep-alive' },
@@ -78,9 +76,28 @@ export function paypalActions(getStore, getActions, setStore) {
             })
             let promise = await response.json()
             console.log(promise)
+            localStorage.setItem("purchaseId", promise.id)
             return promise
-        }
+        },
 
+
+        checkOrderPayment: async (method = "POST") => {
+            let store = getStore()
+            let token = store.tokenPaypal
+            let localStoragePaypalToken = localStorage.getItem("paypalToken")
+            let purchaseId= localStorage.getItem("purchaseId")
+            let url = PAYPAL_API_PURCHASE_URL + "/" + purchaseId + "/capture"
+            let response = await fetch(url, {
+                method: method,
+                headers: { 'Content-Type': 'application/json; charset=UTF-8', 'Authorization': 'Bearer ' + localStoragePaypalToken, 'Connection': 'keep-alive' },
+                
+            })
+            let promise = await response.json()
+            console.log(promise)
+            return promise
+        },
+
+        
 
 
     }
