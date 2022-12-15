@@ -45,8 +45,6 @@ async function login (event){
     let jsonRes = await loginResponse.responseJson // Here we access to the property responseJson from object response
     //that contains token, msg. email from user
     
-    
-
     if (loginResponse.response.ok){ 
         Swal.fire({
             icon: 'success',

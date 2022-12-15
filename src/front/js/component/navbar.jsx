@@ -3,6 +3,7 @@ import "../../styles/navbar.css";
 import { Link } from "react-router-dom";
 import smartHomeImg from "../../img/LOGOTIPO.png";
 import { Context } from "../store/appContext";
+
 export const Navbar = () => {
   const { store, actions } = useContext(Context);
   let isToken = actions.showToken(); //If token exists, then signup button will not be available
@@ -107,6 +108,6 @@ export const Navbar = () => {
           </ul>
         </div>
       </div>
-    </nav>
+    </nav >
   );
 };
