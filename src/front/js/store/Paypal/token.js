@@ -30,35 +30,58 @@ export function paypalActions(getStore, getActions, setStore) {
             let promise = await response.json()
             const store = getStore()
             setStore({ ...store, tokenPaypal: promise.access_token })
+            localStorage.setItem("paypalToken", promise.access_token)
         },
 
 
-        createAnOrder: async (method = "POST") => {
-            const store = getStore()
+        createAnOrder: async (method, amount, description) => {
+            let store = getStore()
+            let token = store.tokenPaypal
+            let localStoragePaypalToken = localStorage.getItem("paypalToken")
+            console.log("funcion crear orden ejecutada")
+
             let response = await fetch(PAYPAL_API_PURCHASE_URL, {
                 method: method,
-                /*'Authorization': 'Bearer ' + store.tokenPaypal*/
-                headers: { 'Content-Type': 'application/json; charset=UTF-8', 'Authorization': 'Bearer ' + store.tokenPaypal },
+                headers: { 'Content-Type': 'application/json; charset=UTF-8', 'Authorization': 'Bearer ' + localStoragePaypalToken, 'Connection': 'keep-alive' },
                 body: JSON.stringify({
                     "intent": "CAPTURE",
-                    "application_context": {
-                        "return_url": "https://example.com",
-                        "cancel_url": "https://example.com"
-                    },
                     "purchase_units": [
                         {
-                            "reference_id": "test",
+                            "items": [
+                                {
+                                    "name": "Tech Product",
+                                    "description": description,
+                                    "quantity": "1",
+                                    "unit_amount": {
+                                        "currency_code": "USD",
+                                        "value": amount
+                                    }
+                                }
+                            ],
                             "amount": {
                                 "currency_code": "USD",
-                                "value": "100.00"
+                                "value": amount,
+                                "breakdown": {
+                                    "item_total": {
+                                        "currency_code": "USD",
+                                        "value": amount
+                                    }
+                                }
                             }
                         }
-                    ]
+                    ],
+                    "application_context": {
+                        "return_url": "https://example.com/return",
+                        "cancel_url": "https://example.com/cancel"
+                    }
                 })
             })
             let promise = await response.json()
             console.log(promise)
+            return promise
         }
+
+
 
     }
 }

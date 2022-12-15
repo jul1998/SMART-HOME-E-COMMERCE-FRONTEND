@@ -18,6 +18,7 @@ function CarritoCompras() {
       let response = await actions.carritoCompras(params.theid)
       console.log(response);
       setCarrito(response);
+
     }
     fetch();
   }, []);
@@ -29,26 +30,29 @@ function CarritoCompras() {
 
 
   const total = async () => {
-    let jsonRes = carrito
+    let jsonRes = carrito.slice()
     console.log(jsonRes)
-    const suma = 0
+    let suma = 0
+    let description = ""
     jsonRes.forEach(item => {
-      suma = suma + (item.cantidad * item.costoUnitario)
+      suma = suma + (item.cantidad * item.price)
+      description = description + ", " + item.name
     })
     suma = suma.toString()
     console.log(suma)
     let access = await actions.getAccessToken()
     console.log("access token created")
-    let linc = await actions.createAnOrder(suma)
-    console.log(linc)
-    return (suma)
+    let response = await actions.createAnOrder("POST", suma, description)
+    let link = response["links"][1]["href"]
+    console.log(link)
+    return link
   }
 
   return (
     <div>
       <div className="container-fluid text-center">
         <div className="row">{(carrito && carrito.length > 0) ? displayCarrito : "null"}</div>
-        <div>{}</div>
+        <button type="button" onClick={total} LinkTo={total} >Comprar</button>
       </div>
     </div>
 
