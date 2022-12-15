@@ -34,7 +34,7 @@ function ProductItem({ product }) {
     <button
       onClick={() => addToFav()}
       type="button"
-      className="btn btn-outline-info"
+      className="button"
     >
       Add to favorites
     </button>
@@ -51,15 +51,14 @@ function ProductItem({ product }) {
         <img
           
           className="product_image"
-          src="https://img.freepik.com/free-photo/medium-shot-man-wearing-vr-glasses_23-2149126949.jpg?w=1060&t=st=1669229881~exp=1669230481~hmac=8d0657c3f598a067a170b07757c757f2d011f31316863f13c0b677472f28fe1d"
-          alt="..."
+          src={product.img?product.img:"https://images.unsplash.com/photo-1633078654544-61b3455b9161?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8NDA0JTIwZXJyb3J8ZW58MHx8MHx8&auto=format&fit=crop&w=600&q=60"}          alt="..."
         />
         <div className="card-body">
           <Link to={`/product/${product.id}/detail_page`}>
             <h5 className="card-title">{product.name}</h5>
           </Link>
           <p className="card-text">Estado: {product.estado}</p>
-          <p className="card-text">Id: {product.id}</p>
+          <p className="card-text">Disponibles: {product.stock}</p>
           <p className="card-text">Precio: {priceDisplay}</p>
           {showFavButton}
         </div>

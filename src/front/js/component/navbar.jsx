@@ -12,31 +12,27 @@ export const Navbar = () => {
   return (
     <nav className="navbar navbar-expand-lg bg-dark" id="navbarcontent1">
       <div className="container-fluid">
-        <a className="navbar-brand" href="/">
+        <Link className="navbar-brand" to="/">
           <img src={smartHomeImg} width="350" height="100" alt="" />
-        </a>
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon"></span>
-        </button>
+        </Link>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-            <li className="nav-item">
+          <form className="d-flex align-center" role="search">
+            <input
+              className="form-control me-2"
+              type="search"
+              placeholder="Buscar productos, categorias y mas..."
+            />
+          </form>
+            
+          </ul>
+          <li className="nav-item-signUp">
               {!isToken ? (
                 <Link to="/signup">
-                  <button className="btn btn-primary">Sign Up</button>
+                  <button className="button">Sign Up</button>
                 </Link>
               ) : null}
             </li>
-          </ul>
-
           <ul className="d-flex nav-item" id="dropdowns">
             <li className="nav-item dropdown">
               <a
@@ -110,85 +106,6 @@ export const Navbar = () => {
               </ul>
             </li>
           </ul>
-          <li className="nav-item dropdown">
-            <a
-              className="nav-link dropdown-toggle"
-              href="#"
-              role="button"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-            >
-              <i className="far fa-user nav-item"></i>
-            </a>
-            <ul className="dropdown-menu">
-              <li>
-                <Link to="/login" className="dropdown-item" onClick={() => {
-                  let response = actions.carritoCompras()
-                }}>
-                  Login
-                </Link>
-              </li>
-              <li>
-                <hr className="dropdown-divider" />
-              </li>
-              <li>
-                <Link to="/userProfile/:theid/settings" className="dropdown-item">
-                  Configuracion
-                </Link>
-              </li>
-              <li>
-                <hr className="dropdown-divider" />
-              </li>
-              <li>
-                <Link to="/logout" className="dropdown-item">
-                  Logout
-                </Link>
-              </li>
-            </ul>
-          </li>
-          <li className="nav-item dropdown">
-            <a
-              className="nav-link dropdown-toggle"
-              href="#"
-              role="button"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-            >
-              <i className="fas fa-shopping-cart"></i>
-            </a>
-            <ul className="dropdown-menu">
-              <li>
-                <Link to={`/user/${store.user_id}/carritoCompras`} className="dropdown-item">
-                  Carrito
-                </Link>
-              </li>
-              <li>
-                <hr className="dropdown-divider" />
-              </li>
-              <li>
-                <a className="dropdown-item" href="#">
-                  Another action
-                </a>
-              </li>
-              <li>
-                <hr className="dropdown-divider" />
-              </li>
-              <li>
-                <a className="dropdown-item" href="#">
-                  Eliminar carrito
-                </a>
-              </li>
-            </ul>
-          </li>
-
-          <form className="d-flex" role="search">
-            <input
-              className="form-control me-2"
-              type="search"
-              placeholder="Search"
-              aria-label="Search"
-            />
-          </form>
         </div>
       </div>
     </nav >

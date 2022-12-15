@@ -3,6 +3,7 @@ import "../../styles/footer.css";
 
 export const Footer = () => (
   <div className="footer_container">
+    
     <footer className="text-center text-lg-start bg-dark text-muted">
       <section className="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
         <div className="me-5 d-none d-lg-block">
@@ -30,7 +31,7 @@ export const Footer = () => (
           </a>
         </div>
       </section>
-
+      
       <section className="">
         <div className="container text-center text-md-start mt-5">
           <div className="row mt-3">
@@ -122,6 +123,7 @@ export const Footer = () => (
           4geeks.com
         </a>
       </div>
+      
     </footer>
   </div>
 );
