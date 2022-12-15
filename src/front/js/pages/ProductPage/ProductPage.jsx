@@ -20,6 +20,7 @@ function Products() {
     fetch();
   }, []);
 
+
   const displayProducts = products.map((product, index) => {
     return <ProductItem key={index} product={product} />;
   });

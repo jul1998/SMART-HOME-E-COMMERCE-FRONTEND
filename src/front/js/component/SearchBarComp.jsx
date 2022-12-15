@@ -1,39 +1,16 @@
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import React, { useState, useContext, useEffect } from "react";
 import { Context } from "../store/appContext";
 import { useNavigate } from "react-router-dom";
+import { ShowProductPageFiltered } from "../pages/ProductPage/ProductPageFiltered.jsx";
+import { ProductItem } from "./ProductComp/ProductItem.jsx";
 
-function SearchBar() {
+function SearchBar({products}) {
+  const navigate = useNavigate()
   const [searchInput, setSearchInput] = useState({
     input: "",
   });
 
-  const countries = [
-    { name: "Belgium", continent: "Europe" },
-    { name: "India", continent: "Asia" },
-    { name: "Bolivia", continent: "South America" },
-    { name: "Ghana", continent: "Africa" },
-    { name: "Japan", continent: "Asia" },
-    { name: "Canada", continent: "North America" },
-    { name: "New Zealand", continent: "Australasia" },
-    { name: "Italy", continent: "Europe" },
-    { name: "South Africa", continent: "Africa" },
-    { name: "China", continent: "Asia" },
-    { name: "Paraguay", continent: "South America" },
-    { name: "Usa", continent: "North America" },
-    { name: "France", continent: "Europe" },
-    { name: "Botswana", continent: "Africa" },
-    { name: "Spain", continent: "Europe" },
-    { name: "Senegal", continent: "Africa" },
-    { name: "Brazil", continent: "South America" },
-    { name: "Denmark", continent: "Europe" },
-    { name: "Mexico", continent: "South America" },
-    { name: "Australia", continent: "Australasia" },
-    { name: "Tanzania", continent: "Africa" },
-    { name: "Bangladesh", continent: "Asia" },
-    { name: "Portugal", continent: "Europe" },
-    { name: "Pakistan", continent: "Asia" },
-  ];
 
   const handleChange = (e) => {
     e.preventDefault();
@@ -45,9 +22,8 @@ function SearchBar() {
       };
     });
   };
-  console.log(searchInput.input);
 
-  const filteredData = countries.filter((el) => {
+  const filteredData = products.filter((el) => {
     //if no input the return the original
     if (searchInput.input === '') {
         return el;
@@ -58,11 +34,14 @@ function SearchBar() {
     }
 })
 
+
   return (
     <div>
       <form
         onSubmit={(e) => {
           e.preventDefault();
+          console.log("here")
+         
         }}
         className="d-flex"
         role="search"
@@ -77,13 +56,13 @@ function SearchBar() {
           value={searchInput.input}
         />
       </form>
-
-      {<ul>
-            {filteredData.map((item) => (
-                <li key={item.id}>{item.name}</li>
+      <ul>
+            {filteredData.map((product) => (
+                <div key={product.id}><ProductItem product={product}/></div>
             ))}
         </ul>
-        }
+    
+
     </div>
   );
 }

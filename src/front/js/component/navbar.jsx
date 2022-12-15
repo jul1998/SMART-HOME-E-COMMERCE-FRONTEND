@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import smartHomeImg from "../../img/LOGOTIPO.png";
 import { Context } from "../store/appContext";
 import {SearchBar} from "./SearchBarComp.jsx"
+import { useNavigate } from "react-router-dom";
 
 
 export const Navbar = () => {
@@ -11,9 +12,10 @@ export const Navbar = () => {
   let isToken = actions.showToken(); //If token exists, then signup button will not be available
   //else it will appear in navbar
 
+
   
   return (
-    <nav className="navbar navbar-expand-lg bg-light" id="navbarcontent1">
+    <nav className="navbar navbar-expand-lg bg-dark" id="navbarcontent1">
       <div className="container-fluid">
         <a className="navbar-brand" href="/">
           <img src={smartHomeImg} width="350" height="100" alt="" />
@@ -113,7 +115,8 @@ export const Navbar = () => {
               </ul>
             </li>
           </ul>
-          <SearchBar/>
+          <Link to="/products/filtered"><button type="button" class="btn btn-info">Search product </button></Link>         
+          
         </div>
       </div>
     </nav>

@@ -44,6 +44,8 @@ function ProductItem({ product }) {
     </button>
   );
 
+  
+
   return (
     <div className="col-12 col-md-4 my-2">
       <div className="card">
