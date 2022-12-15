@@ -16,6 +16,7 @@ import { UserPassword } from "./pages/UserPages/UserChangePassword.jsx";
 import {DeleteUserAccount} from "./component/UserComp/DeleteAccount.jsx"
 import { ProductDetailPage } from "./pages/ProductPage/ProducDetailPage.jsx";
 import { LogOut } from "./component/UserComp/LogOut.jsx";
+import { ShowProductPageFiltered } from "./pages/ProductPage/ProductPageFiltered.jsx";
 
 import { CarritoCompras } from "./pages/ProductPage/CarritoCompras.jsx";
 

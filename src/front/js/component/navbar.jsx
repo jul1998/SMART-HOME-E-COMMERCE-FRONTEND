@@ -22,13 +22,7 @@ export const Navbar = () => {
         </Link>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-          <form className="d-flex align-center" role="search">
-            <input
-              className="form-control me-2"
-              type="search"
-              placeholder="Buscar productos, categorias y mas..."
-            />
-          </form>
+          <Link to="/products/filtered"><button type="button" class="btn btn-info">Search product </button></Link>   
             
           </ul>
           <li className="nav-item-signUp">
