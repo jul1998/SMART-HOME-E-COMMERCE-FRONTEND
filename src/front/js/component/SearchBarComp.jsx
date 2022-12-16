@@ -50,7 +50,7 @@ function SearchBar({products}) {
           className="form-control me-2"
           type="search"
           name="input"
-          placeholder="Search"
+          placeholder="Search a product"
           aria-label="Search"
           onChange={handleChange}
           value={searchInput.input}
