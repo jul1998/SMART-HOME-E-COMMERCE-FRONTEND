@@ -13,6 +13,8 @@ function DeleteUserAccount(){
     async function deleteAccount(){
         let response = await actions.genericFetchProtected(`user/${currentUserId}/delete_account`, "GET")
         console.log(response)
+        localStorage.setItem("token", "")
+        localStorage.setItem("user_id", "")
         return navigate("/logout")
     }
 
@@ -22,6 +24,7 @@ function DeleteUserAccount(){
     return(
         <div>
             <h1>Delete</h1>
+            {deleteAccount}
         </div>
     )
 }

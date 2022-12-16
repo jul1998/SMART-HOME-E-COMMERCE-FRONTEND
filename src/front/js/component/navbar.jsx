@@ -11,7 +11,7 @@ export const Navbar = () => {
   const { store, actions } = useContext(Context);
   let isToken = actions.showToken(); //If token exists, then signup button will not be available
   //else it will appear in navbar
-
+  let userId = localStorage.getItem("user_id")
 
   
   return (
@@ -51,12 +51,23 @@ export const Navbar = () => {
                     </Link>
                   ) : (
                     <Link
-                      to="/userProfile/:theid/settings"
+                      to={`/userProfile/${userId}/settings`}
                       className="dropdown-item"
                     >
                       Configuracion
                     </Link>
+                    
                   )}
+
+                  <li>
+                  <Link
+                      to={`/userProfile/${userId}`}
+                      className="dropdown-item"
+                    >
+                      Cuenta
+                    </Link>
+                  </li>
+
                 </li>
                 <li>
                   <hr className="dropdown-divider" />

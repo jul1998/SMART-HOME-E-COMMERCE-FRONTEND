@@ -10,6 +10,7 @@ function LogOut(){
         async function logout(){
             let response = await actions.logoutFetch()
             console.log(await response.json())
+            
         }
         logout()
     },[])
