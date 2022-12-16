@@ -17,10 +17,12 @@ export function userActions(getStore, getActions, setStore) {
             })
 
             let responseJson = await response.json()
-            localStorage.setItem("token", responseJson.token)
-            localStorage.setItem("user_id", responseJson.user_id)
-            //localStorage.setItem("items", JSON.stringify( {"token":responseJson.token, "item":"whatever"}))
-            setStore({ ...store, token: responseJson.token, user_id: responseJson.user_id })
+            if (response.ok){
+                localStorage.setItem("token", responseJson.token)
+                localStorage.setItem("user_id", responseJson.user_id)
+                setStore({ ...store, token: responseJson.token, user_id: responseJson.user_id })
+            }
+            
             return { response, responseJson }
         },
 
