@@ -60,12 +60,15 @@ export const Navbar = () => {
                   )}
 
                   <li>
-                  <Link
-                      to={`/userProfile/${userId}`}
-                      className="dropdown-item"
-                    >
-                      Cuenta
-                    </Link>
+                    {isToken?(
+                                        <Link
+                                        to={`/userProfile/${userId}`}
+                                        className="dropdown-item"
+                                      >
+                                        Cuenta
+                                      </Link>
+                    ):null}
+
                   </li>
 
                 </li>
