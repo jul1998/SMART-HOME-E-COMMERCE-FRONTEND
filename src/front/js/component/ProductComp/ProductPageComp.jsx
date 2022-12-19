@@ -91,7 +91,13 @@ function ProductDetailPageComp({ product, description }) {
         <div className="row">
           <div className="col-sm-6 col-md-5 col-lg-6">
               {/* This line displays code below img*/}
+              <h1>Postea alguna pregunta</h1>
               
+              <form action="">
+                <textarea name="" id="" cols="30" rows="10">
+
+                </textarea>
+              </form>
               
           </div>
           <div className="col-sm-6 col-md-5 offset-md-2 col-lg-6 offset-lg-0">

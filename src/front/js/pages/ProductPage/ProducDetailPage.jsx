@@ -13,6 +13,7 @@ function ProductDetailPage() {
   
     
   const params = useParams();
+  const userId = localStorage.getItem("user_id")
 
   useEffect(()=>{
     async function fetch() {
@@ -23,6 +24,17 @@ function ProductDetailPage() {
         setProduct(jsonRes)
       }
       fetch();
+  },[])
+
+  useEffect(()=>{
+    async function fetch() {
+      let response = await actions.genericFetch(
+        `product/${params.theid}/user/${userId}/questions`
+      );
+      let jsonRes = await response.json()
+      console.log(jsonRes)
+    }
+    fetch();
   },[])
 
   useEffect(()=>{
