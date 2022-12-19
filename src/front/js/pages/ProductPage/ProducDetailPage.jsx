@@ -10,6 +10,8 @@ function ProductDetailPage() {
   const { store, actions } = useContext(Context);
   const [product, setProduct] = useState([]);
   const [description, setDescription] = useState([]);
+  const [questions, setQuestions] = useState([]);
+
   
     
   const params = useParams();
@@ -29,10 +31,10 @@ function ProductDetailPage() {
   useEffect(()=>{
     async function fetch() {
       let response = await actions.genericFetch(
-        `product/${params.theid}/user/${userId}/questions`
+        `product/${params.theid}/questions`
       );
       let jsonRes = await response.json()
-      console.log(jsonRes)
+      setQuestions(jsonRes)
     }
     fetch();
   },[])
@@ -51,7 +53,7 @@ function ProductDetailPage() {
 
   return (
     <div>
-        <ProductDetailPageComp product={product} description={description}/>
+        <ProductDetailPageComp product={product} description={description} questions={questions}/>
     </div>
   )
 }

@@ -3,7 +3,7 @@ import React, { useState, useContext, useEffect } from "react";
 import "../../../styles/products.css";
 import { Context } from "../../store/appContext";
 
-function ProductDetailPageComp({ product, description }) {
+function ProductDetailPageComp({ product, description, questions }) {
   const { store, actions } = useContext(Context);
   const [itempQuantity, setItempQuantity] = useState(0);
 
@@ -28,8 +28,24 @@ function ProductDetailPageComp({ product, description }) {
   }
 
   let displayDescription = description.map(item=>{
-    return (<li className="list-group-item"><span>{item.description}</span></li>)
+    return (<li key={item.id} className="list-group-item"><span>{item.description}</span></li>)
   })
+
+  let displayQuestions = questions.map((item, index)=>{
+    return (
+      <div>
+
+        <ul>
+    
+        <p>Posted at: <small>{item.posted_at} --- </small>  Posted by {item.author} </p>
+        <p><small>Question #{index+1}</small></p> 
+          <li key={item.id} className="list-group-item"><span>{item.descripcion}</span></li>
+        </ul> 
+      </div>
+      
+      )
+  })
+
 
   return (
     <div>
@@ -91,6 +107,11 @@ function ProductDetailPageComp({ product, description }) {
         <div className="row">
           <div className="col-sm-6 col-md-5 col-lg-6">
               {/* This line displays code below img*/}
+              <div className="product--question">
+                {displayQuestions}
+              </div>
+              
+
               <h1>Postea alguna pregunta</h1>
               
               <form action="">
