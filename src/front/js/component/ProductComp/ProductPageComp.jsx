@@ -2,10 +2,27 @@ import { useParams } from "react-router-dom";
 import React, { useState, useContext, useEffect } from "react";
 import "../../../styles/products.css";
 import { Context } from "../../store/appContext";
+import { useNavigate } from "react-router-dom";
+
 
 function ProductDetailPageComp({ product, description, questions }) {
   const { store, actions } = useContext(Context);
   const [itempQuantity, setItempQuantity] = useState(0);
+  const [questionText, setQuestionText]= useState({
+    question:""
+  })
+
+  
+
+  function handleChangeInText(event) {
+    const {name,value}= event.target
+    setQuestionText(prevQuestionText => {
+        return {
+            ...prevQuestionText,
+            [name]: value
+        }
+    })
+}
 
   let floatProduct = parseFloat(product.price)//Converts price into number
 
@@ -27,16 +44,22 @@ function ProductDetailPageComp({ product, description, questions }) {
     }
   }
 
+  function sendQuestion (e){
+    e.preventDefault()
+    console.log("Here")
+    const {question} = questionText
+    let response = actions.genericFetchProtected(`product/<product_id>/user/<user_id>/questions`)
+
+  }
+
   let displayDescription = description.map(item=>{
     return (<li key={item.id} className="list-group-item"><span>{item.description}</span></li>)
   })
 
   let displayQuestions = questions.map((item, index)=>{
     return (
-      <div>
-
+      <div  >
         <ul>
-    
         <p>Posted at: <small>{item.posted_at} --- </small>  Posted by {item.author} </p>
         <p><small>Question #{index+1}</small></p> 
           <li key={item.id} className="list-group-item"><span>{item.descripcion}</span></li>
@@ -46,7 +69,7 @@ function ProductDetailPageComp({ product, description, questions }) {
       )
   })
 
-
+  console.log(questionText)
   return (
     <div>
       <div className="container text-center">
@@ -107,19 +130,22 @@ function ProductDetailPageComp({ product, description, questions }) {
         <div className="row">
           <div className="col-sm-6 col-md-5 col-lg-6">
               {/* This line displays code below img*/}
-              <div className="product--question">
+              <h2>Preguntas del producto</h2>
+              <div className="product--questions--list">
                 {displayQuestions}
               </div>
+                <div>
+                <h2>Postea alguna pregunta</h2>
               
-
-              <h1>Postea alguna pregunta</h1>
-              
-              <form action="">
-                <textarea name="" id="" cols="30" rows="10">
+              <form onSubmit={sendQuestion}>
+                <textarea className="product--textarea" value={questionText.question}  onChange={handleChangeInText} placeholder="Enter a question..." name="question" id="" cols="30" rows="10">
 
                 </textarea>
+                <button type="submit" className="button-4" role="button">Post question</button>
               </form>
-              
+                </div>
+
+  
           </div>
           <div className="col-sm-6 col-md-5 offset-md-2 col-lg-6 offset-lg-0">
             <ul  className="list-group list-group-flush">
