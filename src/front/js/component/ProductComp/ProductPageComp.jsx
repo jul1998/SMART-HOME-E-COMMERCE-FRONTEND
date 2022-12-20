@@ -5,12 +5,17 @@ import { Context } from "../../store/appContext";
 import { useNavigate } from "react-router-dom";
 
 
+
 function ProductDetailPageComp({ product, description, questions }) {
   const { store, actions } = useContext(Context);
   const [itempQuantity, setItempQuantity] = useState(0);
   const [questionText, setQuestionText]= useState({
     question:""
   })
+
+  let userId = localStorage.getItem("user_id")
+  const params = useParams();
+
 
   
 
@@ -44,11 +49,25 @@ function ProductDetailPageComp({ product, description, questions }) {
     }
   }
 
-  function sendQuestion (e){
-    e.preventDefault()
+  async function sendQuestion (e){
     console.log("Here")
     const {question} = questionText
-    let response = actions.genericFetchProtected(`product/<product_id>/user/<user_id>/questions`)
+    if(question.length === 0){
+      alert("Text cannot be empty")
+    }
+
+    let questionObj = {
+      description:question
+    }
+    let response = await actions.genericFetchProtected(`product/${params.theid}/user/${userId}/questions`,"POST", questionObj)
+    let jsonResponse = await response.json()
+    console.log(response)
+
+    if (response.ok){
+      console.log(jsonResponse.msg)
+    }else{
+      alert(jsonResponse.msg)
+    }
 
   }
 
