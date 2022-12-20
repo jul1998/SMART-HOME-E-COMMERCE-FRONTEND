@@ -27,22 +27,8 @@ function CarritoCompras() {
     return <ProductItem key={index} product={carritos} />;
   }) : "";
 
+  const agrgarHistorialCompras = async () => {
 
-
-  let card = (url) => {
-    console.log("ejecutando card")
-    return (
-      <div
-        onClick={() => window.open(url, '_blank')}
-      >
-        <span>Some content here</span>
-      </div>
-    )
-  }
-
-  let linkPaypal = (link)=>{
-    let element = document.createElement("a")
-    let p = document.getElementById("comprarCarrito")
   }
 
   const total = async () => {
@@ -58,20 +44,39 @@ function CarritoCompras() {
     console.log("access token created")
     let response = await actions.createAnOrder("POST", suma, description)
     let link = response["links"][1]["href"]
-    
 
+    let windowRef = window.open(link, '_blank')
+
+    // Check the payment status of the order every 5 seconds until it is completed
+    let intervalId = setInterval(async () => {
+      let paymentStatus = await actions.checkOrderPayment()
+      if (paymentStatus["status"] === 'COMPLETED') {
+        // Close the window once the payment is completed
+        windowRef.close()
+        Swal.fire({
+          icon: 'success',
+          title: 'Great!',
+          text: 'Payment completed successfully!',
+        })
+        clearInterval(intervalId),
+
+      } elseif (paymentStatus["status"] != 'COMPLETED') {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops!',
+          text: 'There was an error processing your payment. Please try again.',
+        })
+        clearInterval(intervalId)
+      }
+    }, 5000)
   }
-  const confirm = async () => {
-    let response = await actions.checkOrderPayment()
-    console.log(response["status"])
-  }
+
 
   return (
     <div>
       <div className="container-fluid text-center">
         <div className="row">{(carrito && carrito.length > 0) ? displayCarrito : "null"}</div>
         <button type="button" id="comprarCarrito" onClick={total}>Comprar</button>
-        <button type="button" onClick={confirm} >confirmar</button>
       </div>
     </div>
 

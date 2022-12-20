@@ -13,7 +13,7 @@ export const Navbar = () => {
   //else it will appear in navbar
   let userId = localStorage.getItem("user_id")
 
-  
+
   return (
     <nav className="navbar navbar-expand-lg bg-dark" id="navbarcontent1">
       <div className="container-fluid">
@@ -22,16 +22,16 @@ export const Navbar = () => {
         </Link>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-          <Link to="/products/filtered"><button type="button" class="btn btn-info">Search product </button></Link>   
-            
+            <Link to="/products/filtered"><button type="button" class="btn btn-info">Search product </button></Link>
+
           </ul>
           <li className="nav-item-signUp">
-              {!isToken ? (
-                <Link to="/signup">
-                  <button className="button">Sign Up</button>
-                </Link>
-              ) : null}
-            </li>
+            {!isToken ? (
+              <Link to="/signup">
+                <button className="button">Sign Up</button>
+              </Link>
+            ) : null}
+          </li>
           <ul className="d-flex nav-item" id="dropdowns">
             <li className="nav-item dropdown">
               <a
@@ -56,18 +56,18 @@ export const Navbar = () => {
                     >
                       Configuracion
                     </Link>
-                    
+
                   )}
 
                   <li>
-                    {isToken?(
-                                        <Link
-                                        to={`/userProfile/${userId}`}
-                                        className="dropdown-item"
-                                      >
-                                        Cuenta
-                                      </Link>
-                    ):null}
+                    {isToken ? (
+                      <Link
+                        to={`/userProfile/${userId}`}
+                        className="dropdown-item"
+                      >
+                        Cuenta
+                      </Link>
+                    ) : null}
 
                   </li>
 
@@ -96,7 +96,7 @@ export const Navbar = () => {
               </a>
               <ul className="dropdown-menu">
                 <li>
-                  <Link to="/products" className="dropdown-item">
+                  <Link to={`/user/${userId}/carritoCompras`} className="dropdown-item">
                     Productos
                   </Link>
                 </li>
