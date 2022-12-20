@@ -1,12 +1,14 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import "../../styles/navbar.css";
 import { Link } from "react-router-dom";
 import smartHomeImg from "../../img/LOGOTIPO.png";
 import { Context } from "../store/appContext";
+
 export const Navbar = () => {
   const { store, actions } = useContext(Context);
   let isToken = actions.showToken(); //If token exists, then signup button will not be available
   //else it will appear in navbar
+  let userId = localStorage.getItem("user_id");
 
   return (
     <nav className="navbar navbar-expand-lg bg-dark" id="navbarcontent1">
@@ -16,22 +18,19 @@ export const Navbar = () => {
         </Link>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-          <form className="d-flex align-center" role="search">
-            <input
-              className="form-control me-2"
-              type="search"
-              placeholder="Buscar productos, categorias y mas..."
-            />
-          </form>
-            
+            <Link to="/products/filtered">
+              <button type="button" class="btn btn-info">
+                Search product{""}
+              </button>
+            </Link>
           </ul>
           <li className="nav-item-signUp">
-              {!isToken ? (
-                <Link to="/signup">
-                  <button className="button">Sign Up</button>
-                </Link>
-              ) : null}
-            </li>
+            {!isToken ? (
+              <Link to="/signup">
+                <button className="button">Sign Up</button>
+              </Link>
+            ) : null}
+          </li>
           <ul className="d-flex nav-item" id="dropdowns">
             <li className="nav-item dropdown">
               <a
@@ -51,12 +50,23 @@ export const Navbar = () => {
                     </Link>
                   ) : (
                     <Link
-                      to="/userProfile/:theid/settings"
+                      to={`/userProfile/${userId}/settings`}
                       className="dropdown-item"
                     >
                       Configuracion
                     </Link>
                   )}
+
+                  <li>
+                    {isToken ? (
+                      <Link
+                        to={`/userProfile/${userId}`}
+                        className="dropdown-item"
+                      >
+                        Cuenta
+                      </Link>
+                    ) : null}
+                  </li>
                 </li>
                 <li>
                   <hr className="dropdown-divider" />
@@ -70,40 +80,44 @@ export const Navbar = () => {
                 </li>
               </ul>
             </li>
-            <li className="nav-item dropdown">
-              <a
-                className="nav-link dropdown-toggle"
-                href="#"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                <i className="fas fa-shopping-cart"></i>
-              </a>
-              <ul className="dropdown-menu">
-                <li>
-                  <Link to="/products" className="dropdown-item">
-                    Productos
-                  </Link>
-                </li>
-                <li>
-                  <hr className="dropdown-divider" />
-                </li>
-                <li>
-                  <a className="dropdown-item" href="#">
-                    Another action
-                  </a>
-                </li>
-                <li>
-                  <hr className="dropdown-divider" />
-                </li>
-                <li>
-                  <a className="dropdown-item" href="#">
-                    Eliminar carrito
-                  </a>
-                </li>
-              </ul>
-            </li>
+
+            {!isToken ? null : (
+              <li className="nav-item dropdown">
+                <a
+                  className="nav-link dropdown-toggle"
+                  id="DropDownCart"
+                  href="#"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  <i className="fas fa-shopping-cart"></i>
+                </a>
+                <ul className="dropdown-menu">
+                  <li>
+                    <Link to="/products" className="dropdown-item">
+                      Productos
+                    </Link>
+                  </li>
+                  <li>
+                    <hr className="dropdown-divider" />
+                  </li>
+                  <li>
+                    <a className="dropdown-item" href="#">
+                      Another action
+                    </a>
+                  </li>
+                  <li>
+                    <hr className="dropdown-divider" />
+                  </li>
+                  <li>
+                    <a className="dropdown-item" href="#">
+                      Eliminar carrito
+                    </a>
+                  </li>
+                </ul>
+              </li>
+            )}
           </ul>
         </div>
       </div>

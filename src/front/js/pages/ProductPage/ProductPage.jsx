@@ -2,6 +2,7 @@ import React, { useState, useContext, useEffect } from "react";
 import "../../../styles/products.css";
 import Swal from "sweetalert2";
 import { Context } from "../../store/appContext";
+/*import { ProductItem } from "../../component/Productos/ProductItem.jsx";*/
 import { ProductItem } from "../../component/ProductComp/ProductItem.jsx";
 
 function Products() {
@@ -20,6 +21,7 @@ function Products() {
     fetch();
   }, []);
 
+
   const displayProducts = products.map((product, index) => {
     return <ProductItem key={index} product={product} />;
   });
@@ -30,6 +32,7 @@ function Products() {
         <div className="row">{displayProducts}</div>
       </div>
     </div>
+
   );
 }
 

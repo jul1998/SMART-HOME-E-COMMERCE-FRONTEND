@@ -16,6 +16,10 @@ import { UserPassword } from "./pages/UserPages/UserChangePassword.jsx";
 import {DeleteUserAccount} from "./component/UserComp/DeleteAccount.jsx"
 import { ProductDetailPage } from "./pages/ProductPage/ProducDetailPage.jsx";
 import { LogOut } from "./component/UserComp/LogOut.jsx";
+import { ShowProductPageFiltered } from "./pages/ProductPage/ProductPageFiltered.jsx";
+
+import { CarritoCompras } from "./pages/ProductPage/CarritoCompras.jsx";
+
 
 import injectContext from "./store/appContext";
 
@@ -40,6 +44,7 @@ const Layout = () => {
             <Route element={<Signup />} path="/signup" />
             <Route element={<Login />} path="/login" />
             <Route element={<Products />} path="/products" />
+            <Route element={<ShowProductPageFiltered />} path="/products/filtered" />
             <Route element={<LoginAdmin />} path="/LoginAdmin" />
             <Route element={<SignupAdmin />} path="/signupAdmin" />
             <Route element={<SignupAdmin />} path="/signupAdmin" />
@@ -48,6 +53,7 @@ const Layout = () => {
             <Route element={<UserPassword />} path="/userProfile/:theid/change_password" />
             <Route element={<DeleteUserAccount />} path="/userProfile/:theid/delete_account" />
             <Route element={<ProductDetailPage />} path="/product/:theid/detail_page" />
+            <Route element={<CarritoCompras />} path="/user/:theid/carritoCompras"/>
             <Route element={<LogOut />} path="/logout" />
             <Route element={<h1>Not found!</h1>} />
           </Routes>

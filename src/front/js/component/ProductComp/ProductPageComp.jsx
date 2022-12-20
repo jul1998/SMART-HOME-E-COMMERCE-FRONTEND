@@ -92,6 +92,7 @@ function ProductDetailPageComp({ product, description }) {
           <div className="col-sm-6 col-md-5 col-lg-6">
               {/* This line displays code below img*/}
               
+              
           </div>
           <div className="col-sm-6 col-md-5 offset-md-2 col-lg-6 offset-lg-0">
             <ul  className="list-group list-group-flush">
