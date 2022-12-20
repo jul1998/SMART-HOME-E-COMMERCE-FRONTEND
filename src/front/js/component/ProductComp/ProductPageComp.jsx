@@ -12,9 +12,11 @@ function ProductDetailPageComp({ product, description, questions }) {
   const [questionText, setQuestionText]= useState({
     question:""
   })
+  let token = localStorage.getItem("token")
 
   let userId = localStorage.getItem("user_id")
   const params = useParams();
+  let navigate = useNavigate()
 
 
   
@@ -153,16 +155,28 @@ function ProductDetailPageComp({ product, description, questions }) {
               <div className="product--questions--list">
                 {displayQuestions}
               </div>
+                {token?
                 <div>
                 <h2>Postea alguna pregunta</h2>
               
               <form onSubmit={sendQuestion}>
-                <textarea className="product--textarea" value={questionText.question}  onChange={handleChangeInText} placeholder="Enter a question..." name="question" id="" cols="30" rows="10">
 
-                </textarea>
-                <button type="submit" className="button-4" role="button">Post question</button>
+                  <textarea className="product--textarea" value={questionText.question}  onChange={handleChangeInText} placeholder="Enter a question..." name="question" id="" cols="30" rows="10">
+
+                  </textarea>
+                  <button type="submit" className="button-4" role="button">Post question</button>
+              
               </form>
-                </div>
+                </div>: <button
+                          onClick={() => navigate("/login")}
+                          type="button"
+                          className="btn btn-outline-info"
+                        >
+                          Login to post questions
+                        </button>
+                
+              }
+                
 
   
           </div>
