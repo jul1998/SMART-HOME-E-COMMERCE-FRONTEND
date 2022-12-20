@@ -28,3 +28,21 @@
 .button:hover {
   background-position: 185% 50%;
 }
+
+.centrado {
+  display: block; /* convierte el botón en un elemento de bloque */
+  width: 200px; /* ancho del botón */
+  margin: auto; /* centra el botón horizontal y verticalmente */
+}
+
+.contenedor {
+  display: flex; /* convierte el elemento en un contenedor flex */
+  justify-content: center; /* alinea los elementos hijo en el centro del eje horizontal */
+  align-items: center; /* alinea los elementos hijo en el centro del eje vertical */
+}
+
+#DropDownCart {
+  
+  top: 100%; /* ajusta la posición del menú en la parte superior de la pantalla */
+  left: 0; /* ajusta la posición del menú en la parte izquierda de la pantalla */
+}
