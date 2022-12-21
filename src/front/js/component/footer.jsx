@@ -11,22 +11,19 @@ export const Footer = () => (
         </div>
 
         <div>
-          <a href="" className="me-4 text-reset">
+          <a href="https://www.facebook.com/DHunter091" target={"_blank"} className="me-4 text-reset">
             <i className="fab fa-facebook-f"></i>
           </a>
-          <a href="" className="me-4 text-reset">
+          <a href="https://twitter.com/4GeeksAcademy" target={"_blank"} className="me-4 text-reset">
             <i className="fab fa-twitter"></i>
           </a>
-          <a href="" className="me-4 text-reset">
-            <i className="fab fa-google"></i>
-          </a>
-          <a href="" className="me-4 text-reset">
+          <a href="https://www.instagram.com/prisma_ml/" target={"_blank"} className="me-4 text-reset">
             <i className="fab fa-instagram"></i>
           </a>
-          <a href="" className="me-4 text-reset">
+          <a href="https://www.linkedin.com/in/miguel-l%C3%B3pez-66480b212/" target={"_blank"} className="me-4 text-reset">
             <i className="fab fa-linkedin"></i>
           </a>
-          <a href="" className="me-4 text-reset">
+          <a href="https://github.com/PrismaIllya9016" target={"_blank"} className="me-4 text-reset">
             <i className="fab fa-github"></i>
           </a>
         </div>
@@ -50,22 +47,22 @@ export const Footer = () => (
               <h6 className="text-uppercase fw-bold mb-4">Productos</h6>
 
               <p>
-              <a href="#!" className="text-reset">
+              <a href="/products/filtered" className="text-reset">
                   Cerraduras
                 </a>
               </p>
               <p>
-                <a href="#!" className="text-reset">
+                <a href="/products/filtered" className="text-reset">
                   Camaras
                 </a>
               </p>
               <p>
-                <a href="#!" className="text-reset">
+                <a href="/products/filtered" className="text-reset">
                   Sensores
                 </a>
                 </p>
               <p>
-                <a href="#!" className="text-reset">
+                <a href="/products/filtered" className="text-reset">
                   Luces
                 </a>
                 
@@ -120,7 +117,7 @@ export const Footer = () => (
       <div className="text-center p-4">
         © 2022 Copyright:
         <a className="text-reset fw-bold" href="https://mdbootstrap.com/">
-          4geeks.com
+         TechlightShop.com
         </a>
       </div>
       
