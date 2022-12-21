@@ -51,7 +51,7 @@ export const Navbar = () => {
                       to={`/userProfile/${userId}/settings`}
                       className="dropdown-item"
                     >
-                      Configuracion
+                      Settings
                     </Link>
 
                   )}
@@ -64,7 +64,7 @@ export const Navbar = () => {
                         to={`/userProfile/${userId}`}
                         className="dropdown-item"
                       >
-                        Cuenta
+                        Account
                       </Link>
                     ) : null}
 
@@ -75,7 +75,7 @@ export const Navbar = () => {
                 <li>
                   {!isToken ? null : (
                     <Link to="/logout" className="dropdown-item">
-                      <p className="logout-txt">Cerrar sesion</p>
+                      <p className="logout-txt">Logout0</p>
                     </Link>
                   )}
                 </li>
@@ -110,7 +110,7 @@ export const Navbar = () => {
                 </li>
                 <li>
                   <a className="dropdown-item" href="#">
-                    Eliminar carrito
+                    Delete cart
                   </a>
                 </li>
               </ul>

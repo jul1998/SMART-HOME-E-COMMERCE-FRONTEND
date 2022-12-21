@@ -57,9 +57,9 @@ function ProductItem({ product }) {
           />
           <div className="card-body">
             <h5 className="card-title">{product.name}</h5>
-            <p className="card-text">Estado: {product.estado}</p>
+            <p className="card-text">State: {product.estado}</p>
             <p className="card-text">Id: {product.id}</p>
-            <p className="card-text">Precio: {product.price}</p>
+            <p className="card-text">Price: {product.price}</p>
             {showFavButton}
             
           </div>

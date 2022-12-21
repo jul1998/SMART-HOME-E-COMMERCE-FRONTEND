@@ -58,9 +58,8 @@ function ProductItem({ product }) {
           <Link to={`/product/${product.id}/detail_page`}>
             <h5 className="card-title">{product.name}</h5>
           </Link>
-          <p className="card-text">Estado: {product.estado}</p>
-          <p className="card-text">Disponibles: {product.stock}</p>
-          <p className="card-text">Precio: {priceDisplay}</p>
+          <p className="card-text">In stock: {product.stock}</p>
+          <p className="card-text">Price: {priceDisplay}</p>
           {showFavButton}
           {isToken ? (
             <Link to={`/product/${product.id}/detail_page`}>

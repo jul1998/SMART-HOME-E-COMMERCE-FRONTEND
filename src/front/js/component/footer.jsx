@@ -6,7 +6,7 @@ export const Footer = () => (
     <footer className="text-center text-lg-start bg-dark text-muted">
       <section className="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
         <div className="me-5 d-none d-lg-block">
-          <span>Siguenos en nuestras redes sociales:</span>
+          <span>Follow us on our social media :</span>
         </div>
 
         <div>
@@ -56,36 +56,35 @@ export const Footer = () => (
                 <i className="fas fa-gem me-3"></i>TECHLIGHT
               </h6>
               <p>
-                Somos una empresa autorizada para comercializar y distribuir
-                cerraduras, camaras y otros productos de seguridad inteligente
-                de la marca TECHLIGHT a nivel nacional.
+                We are a company authorized to market and distribute locks,
+                cameras and other smart home security products of the TECHLIGHT brand
+                nationwide.
               </p>
             </div>
 
             <div className="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
-              <h6 className="text-uppercase fw-bold mb-4">Productos</h6>
+              <h6 className="text-uppercase fw-bold mb-4">Products</h6>
 
               <p>
                 <a href="/products/filtered" className="text-reset">
-                  Cerraduras
+                  Locks
                 </a>
               </p>
               <p>
                 <a href="/products/filtered" className="text-reset">
-                  Camaras
+                  Cameras
                 </a>
               </p>
               <p>
                 <a href="/products/filtered" className="text-reset">
-                  Sensores
+                 Sensors
                 </a>
               </p>
               <p>
                 <a href="/products/filtered" className="text-reset">
-                  Luces
+                  Lights
                 </a>
               </p>
-
             </div>
 
             <div className="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
@@ -96,7 +95,10 @@ export const Footer = () => (
                 </a>
               </p>
               <p>
-                <a href="/userProfile/${userId}/settings" className="text-reset">
+                <a
+                  href="/userProfile/${userId}/settings"
+                  className="text-reset"
+                >
                   Settings
                 </a>
               </p>
