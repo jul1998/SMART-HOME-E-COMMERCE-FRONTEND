@@ -3,7 +3,6 @@ import "../../styles/footer.css";
 
 export const Footer = () => (
   <div className="footer_container">
-    
     <footer className="text-center text-lg-start bg-dark text-muted">
       <section className="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
         <div className="me-5 d-none d-lg-block">
@@ -11,24 +10,44 @@ export const Footer = () => (
         </div>
 
         <div>
-          <a href="https://www.facebook.com/DHunter091" target={"_blank"} className="me-4 text-reset">
+          <a
+            href="https://www.facebook.com/DHunter091"
+            target={"_blank"}
+            className="me-4 text-reset"
+          >
             <i className="fab fa-facebook-f"></i>
           </a>
-          <a href="https://twitter.com/4GeeksAcademy" target={"_blank"} className="me-4 text-reset">
+          <a
+            href="https://twitter.com/4GeeksAcademy"
+            target={"_blank"}
+            className="me-4 text-reset"
+          >
             <i className="fab fa-twitter"></i>
           </a>
-          <a href="https://www.instagram.com/prisma_ml/" target={"_blank"} className="me-4 text-reset">
+          <a
+            href="https://www.instagram.com/prisma_ml/"
+            target={"_blank"}
+            className="me-4 text-reset"
+          >
             <i className="fab fa-instagram"></i>
           </a>
-          <a href="https://www.linkedin.com/in/miguel-l%C3%B3pez-66480b212/" target={"_blank"} className="me-4 text-reset">
+          <a
+            href="https://www.linkedin.com/in/miguel-l%C3%B3pez-66480b212/"
+            target={"_blank"}
+            className="me-4 text-reset"
+          >
             <i className="fab fa-linkedin"></i>
           </a>
-          <a href="https://github.com/PrismaIllya9016" target={"_blank"} className="me-4 text-reset">
+          <a
+            href="https://github.com/PrismaIllya9016"
+            target={"_blank"}
+            className="me-4 text-reset"
+          >
             <i className="fab fa-github"></i>
           </a>
         </div>
       </section>
-      
+
       <section className="">
         <div className="container text-center text-md-start mt-5">
           <div className="row mt-3">
@@ -37,9 +56,9 @@ export const Footer = () => (
                 <i className="fas fa-gem me-3"></i>TECHLIGHT
               </h6>
               <p>
-                Somos una empresa autorizada para
-                comercializar y distribuir cerraduras, camaras y otros
-                productos de seguridad  inteligente de la marca TECHLIGHT a nivel nacional.
+                Somos una empresa autorizada para comercializar y distribuir
+                cerraduras, camaras y otros productos de seguridad inteligente
+                de la marca TECHLIGHT a nivel nacional.
               </p>
             </div>
 
@@ -47,7 +66,7 @@ export const Footer = () => (
               <h6 className="text-uppercase fw-bold mb-4">Productos</h6>
 
               <p>
-              <a href="/products/filtered" className="text-reset">
+                <a href="/products/filtered" className="text-reset">
                   Cerraduras
                 </a>
               </p>
@@ -60,13 +79,13 @@ export const Footer = () => (
                 <a href="/products/filtered" className="text-reset">
                   Sensores
                 </a>
-                </p>
+              </p>
               <p>
                 <a href="/products/filtered" className="text-reset">
                   Luces
                 </a>
-                
               </p>
+
             </div>
 
             <div className="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
@@ -77,7 +96,7 @@ export const Footer = () => (
                 </a>
               </p>
               <p>
-                <a href="#!" className="text-reset">
+                <a href="/userProfile/${userId}/settings" className="text-reset">
                   Settings
                 </a>
               </p>
@@ -96,7 +115,7 @@ export const Footer = () => (
             <div className="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
               <h6 className="text-uppercase fw-bold mb-4">Contact</h6>
               <p>
-                <i className="fas fa-home me-3"></i> 
+                <i className="fas fa-home me-3"></i>
                 Miami, US
               </p>
               <p>
@@ -117,10 +136,9 @@ export const Footer = () => (
       <div className="text-center p-4">
         © 2022 Copyright:
         <a className="text-reset fw-bold" href="https://mdbootstrap.com/">
-         TechlightShop.com
+          TechlightShop.com
         </a>
       </div>
-      
     </footer>
   </div>
 );
