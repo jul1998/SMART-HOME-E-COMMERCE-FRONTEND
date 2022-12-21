@@ -8,7 +8,7 @@ import { ProductItem } from "./ProductComp/ProductItem.jsx";
 function SearchBar({products}) {
   const navigate = useNavigate()
   const [searchInput, setSearchInput] = useState({
-    input: "",
+  input: "",
   });
 
 
@@ -56,7 +56,7 @@ function SearchBar({products}) {
           value={searchInput.input}
         />
       </form>
-      <ul>
+      <ul className="text-center">
             {filteredData.map((product) => (
                 <div key={product.id}><ProductItem product={product}/></div>
             ))}

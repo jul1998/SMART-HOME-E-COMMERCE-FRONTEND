@@ -54,7 +54,9 @@ export const Navbar = () => {
                       className="dropdown-item"
                     >
                       Configuracion
+                      
                     </Link>
+                    
                   )}
 
                   <li>
@@ -64,17 +66,21 @@ export const Navbar = () => {
                         className="dropdown-item"
                       >
                         Cuenta
+                        
                       </Link>
-                    ) : null}
+                      
+                    ) 
+                    : null}
                   </li>
                 </li>
-                <li>
-                  <hr className="dropdown-divider" />
-                </li>
+                {!isToken ? null : (
+                    <hr className="dropdown-divider"/>
+                  )}
+                
                 <li>
                   {!isToken ? null : (
                     <Link to="/logout" className="dropdown-item">
-                      Logout
+                      <p className="logout-txt">Cerrar sesion</p>
                     </Link>
                   )}
                 </li>

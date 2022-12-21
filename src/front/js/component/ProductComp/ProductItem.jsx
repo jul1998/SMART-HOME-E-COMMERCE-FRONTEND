@@ -30,7 +30,7 @@ function ProductItem({ product }) {
 
   const showFavButton = isToken ? (
     <button onClick={() => addToFav()} type="button" className="button">
-      Add to favorites
+      <i class="far fa-heart"></i>
     </button>
   ) : (
     <button
