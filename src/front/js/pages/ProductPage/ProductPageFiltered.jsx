@@ -23,7 +23,6 @@ function ShowProductPageFiltered(){
 
     fetch();
   }, []);
-  console.log(products)
 
    
     return(

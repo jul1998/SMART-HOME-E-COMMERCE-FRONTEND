@@ -10,9 +10,12 @@ function ProductDetailPage() {
   const { store, actions } = useContext(Context);
   const [product, setProduct] = useState([]);
   const [description, setDescription] = useState([]);
+  const [questions, setQuestions] = useState([]);
+
   
     
   const params = useParams();
+  const userId = localStorage.getItem("user_id")
 
   useEffect(()=>{
     async function fetch() {
@@ -23,6 +26,17 @@ function ProductDetailPage() {
         setProduct(jsonRes)
       }
       fetch();
+  },[])
+
+  useEffect(()=>{
+    async function fetch() {
+      let response = await actions.genericFetch(
+        `product/${params.theid}/questions`
+      );
+      let jsonRes = await response.json()
+      setQuestions(jsonRes)
+    }
+    fetch();
   },[])
 
   useEffect(()=>{
@@ -39,7 +53,7 @@ function ProductDetailPage() {
 
   return (
     <div>
-        <ProductDetailPageComp product={product} description={description}/>
+        <ProductDetailPageComp product={product} description={description} questions={questions}/>
     </div>
   )
 }

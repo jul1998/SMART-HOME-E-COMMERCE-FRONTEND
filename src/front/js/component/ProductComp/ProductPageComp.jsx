@@ -2,10 +2,34 @@ import { useParams } from "react-router-dom";
 import React, { useState, useContext, useEffect } from "react";
 import "../../../styles/products.css";
 import { Context } from "../../store/appContext";
+import { useNavigate } from "react-router-dom";
 
-function ProductDetailPageComp({ product, description }) {
+
+
+function ProductDetailPageComp({ product, description, questions }) {
   const { store, actions } = useContext(Context);
   const [itempQuantity, setItempQuantity] = useState(0);
+  const [questionText, setQuestionText]= useState({
+    question:""
+  })
+  let token = localStorage.getItem("token")
+
+  let userId = localStorage.getItem("user_id")
+  const params = useParams();
+  let navigate = useNavigate()
+
+
+  
+
+  function handleChangeInText(event) {
+    const {name,value}= event.target
+    setQuestionText(prevQuestionText => {
+        return {
+            ...prevQuestionText,
+            [name]: value
+        }
+    })
+}
 
   let floatProduct = parseFloat(product.price)//Converts price into number
 
@@ -27,10 +51,46 @@ function ProductDetailPageComp({ product, description }) {
     }
   }
 
+  async function sendQuestion (e){
+    console.log("Here")
+    const {question} = questionText
+    if(question.length === 0){
+      alert("Text cannot be empty")
+    }
+
+    let questionObj = {
+      description:question
+    }
+    let response = await actions.genericFetchProtected(`product/${params.theid}/user/${userId}/questions`,"POST", questionObj)
+    let jsonResponse = await response.json()
+    console.log(response)
+
+    if (response.ok){
+      console.log(jsonResponse.msg)
+    }else{
+      alert(jsonResponse.msg)
+    }
+
+  }
+
   let displayDescription = description.map(item=>{
-    return (<li className="list-group-item"><span>{item.description}</span></li>)
+    return (<li key={item.id} className="list-group-item"><span>{item.description}</span></li>)
   })
 
+  let displayQuestions = questions.map((item, index)=>{
+    return (
+      <div  >
+        <ul>
+        <p>Posted at: <small>{item.posted_at} --- </small>  Posted by {item.author} </p>
+        <p><small>Question #{index+1}</small></p> 
+          <li key={item.id} className="list-group-item"><span>{item.descripcion}</span></li>
+        </ul> 
+      </div>
+      
+      )
+  })
+
+  console.log(questionText)
   return (
     <div>
       <div className="container text-center">
@@ -91,8 +151,34 @@ function ProductDetailPageComp({ product, description }) {
         <div className="row">
           <div className="col-sm-6 col-md-5 col-lg-6">
               {/* This line displays code below img*/}
+              <h2>Preguntas del producto</h2>
+              <div className="product--questions--list">
+                {displayQuestions}
+              </div>
+                {token?
+                <div>
+                <h2>Postea alguna pregunta</h2>
               
+              <form onSubmit={sendQuestion}>
+
+                  <textarea className="product--textarea" value={questionText.question}  onChange={handleChangeInText} placeholder="Enter a question..." name="question" id="" cols="30" rows="10">
+
+                  </textarea>
+                  <button type="submit" className="button-4" role="button">Post question</button>
               
+              </form>
+                </div>: <button
+                          onClick={() => navigate("/login")}
+                          type="button"
+                          className="btn btn-outline-info"
+                        >
+                          Login to post questions
+                        </button>
+                
+              }
+                
+
+  
           </div>
           <div className="col-sm-6 col-md-5 offset-md-2 col-lg-6 offset-lg-0">
             <ul  className="list-group list-group-flush">
