@@ -57,30 +57,34 @@ function CarritoCompras() {
           icon: 'success',
           title: 'Great!',
           text: 'Payment completed successfully!',
-        })
-        clearInterval(intervalId),
-
-      } elseif (paymentStatus["status"] != 'COMPLETED') {
-        Swal.fire({
-          icon: 'error',
-          title: 'Oops!',
-          text: 'There was an error processing your payment. Please try again.',
-        })
-        clearInterval(intervalId)
-      }
-    }, 5000)
+          allowOutsideClick: true
+        }).then(() => {
+          // Navigate to another component when the window is closed
+          agrgarHistorialCompras()
+          navigate('/login');
+        });
+    clearInterval(intervalId)
+  } if (paymentStatus["status"] !== 'COMPLETED') {
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops!',
+      text: 'There was an error processing your payment. Please try again.',
+    })
+    clearInterval(intervalId)
+  }
+}, 5000)
   }
 
 
-  return (
-    <div>
-      <div className="container-fluid text-center">
-        <div className="row">{(carrito && carrito.length > 0) ? displayCarrito : "null"}</div>
-        <button type="button" id="comprarCarrito" onClick={total}>Comprar</button>
-      </div>
+return (
+  <div>
+    <div className="container-fluid text-center">
+      <div className="row">{(carrito && carrito.length > 0) ? displayCarrito : "null"}</div>
+      <button type="button" id="comprarCarrito" onClick={total}>Comprar</button>
     </div>
+  </div>
 
-  );
+);
 }
 
 export { CarritoCompras };
