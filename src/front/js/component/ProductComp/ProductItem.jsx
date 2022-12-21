@@ -30,7 +30,7 @@ function ProductItem({ product }) {
 
   const showFavButton = isToken ? (
     <button onClick={() => addToFav()} type="button" className="button">
-      Add to favorites
+      <i class="far fa-heart"></i>
     </button>
   ) : (
     <button
@@ -38,7 +38,7 @@ function ProductItem({ product }) {
       type="button"
       className="btn btn-outline-info"
     >
-      Login to add product to favorites
+      Login to buy/add product to favorites
     </button>
   );
 
@@ -62,9 +62,13 @@ function ProductItem({ product }) {
           <p className="card-text">Disponibles: {product.stock}</p>
           <p className="card-text">Precio: {priceDisplay}</p>
           {showFavButton}
-          <Link to={`/product/${product.id}/detail_page`}>
-            <button className="button"><i className="fas fa-shopping-cart"></i></button>
-          </Link>
+          {isToken ? (
+            <Link to={`/product/${product.id}/detail_page`}>
+              <button className="button">
+                <i className="fas fa-shopping-cart"></i>
+              </button>
+            </Link>
+          ) : null}
         </div>
       </div>
     </div>

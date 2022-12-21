@@ -29,7 +29,7 @@ export const Navbar = () => {
               </Link>
             ) : null}
           </li>
-          <ul className="d-flex nav-item" id="dropdowns">
+          <ul className="btn-group dropstart" id="dropdowns">
             <li className="nav-item dropdown">
               <a
                 className="nav-link dropdown-toggle"
@@ -56,6 +56,8 @@ export const Navbar = () => {
 
                   )}
 
+                  <hr className="dropdown-divider" />
+
                   <li>
                     {isToken ? (
                       <Link
@@ -68,13 +70,12 @@ export const Navbar = () => {
 
                   </li>
                 </li>
-                <li>
-                  <hr className="dropdown-divider" />
-                </li>
+                {!isToken ? null : <hr className="dropdown-divider" />}
+
                 <li>
                   {!isToken ? null : (
                     <Link to="/logout" className="dropdown-item">
-                      Logout
+                      <p className="logout-txt">Cerrar sesion</p>
                     </Link>
                   )}
                 </li>

@@ -104,7 +104,8 @@ function ProductDetailPageComp({ product, description, questions }) {
           </div>
           <div  className="col-sm-5 col-md-6 my-5">
             <h1>{product.name}</h1>
-            <p className="col-md-4">Reviews</p>
+            <p className="col-md-4">{""}</p>
+            
 
             <h2 className="col-md-4">{priceDisplay}</h2>
             <div className="row">
