@@ -8,7 +8,8 @@ export const Navbar = () => {
   const { store, actions } = useContext(Context);
   let isToken = actions.showToken(); //If token exists, then signup button will not be available
   //else it will appear in navbar
-  let userId = localStorage.getItem("user_id");
+  let userId = localStorage.getItem("user_id")
+
 
   return (
     <nav className="navbar navbar-expand-lg bg-dark" id="navbarcontent1">
@@ -18,11 +19,8 @@ export const Navbar = () => {
         </Link>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-            <Link to="/products/filtered">
-              <button type="button" class="btn btn-info">
-                Search product{""}
-              </button>
-            </Link>
+            <Link to="/products/filtered"><button type="button" class="btn btn-info">Search product </button></Link>
+
           </ul>
           <li className="nav-item-signUp">
             {!isToken ? (
@@ -55,6 +53,7 @@ export const Navbar = () => {
                     >
                       Configuracion
                     </Link>
+
                   )}
 
                   <hr className="dropdown-divider" />
@@ -68,6 +67,7 @@ export const Navbar = () => {
                         Cuenta
                       </Link>
                     ) : null}
+
                   </li>
                 </li>
                 {!isToken ? null : <hr className="dropdown-divider" />}
@@ -81,44 +81,40 @@ export const Navbar = () => {
                 </li>
               </ul>
             </li>
-
-            {!isToken ? null : (
-              <li className="nav-item dropdown">
-                <a
-                  className="nav-link dropdown-toggle"
-                  id="DropDownCart"
-                  href="#"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  <i className="fas fa-shopping-cart"></i>
-                </a>
-                <ul className="dropdown-menu">
-                  <li>
-                    <Link to="/products" className="dropdown-item">
-                      Productos
-                    </Link>
-                  </li>
-                  <li>
-                    <hr className="dropdown-divider" />
-                  </li>
-                  <li>
-                    <a className="dropdown-item" href="#">
-                      Another action
-                    </a>
-                  </li>
-                  <li>
-                    <hr className="dropdown-divider" />
-                  </li>
-                  <li>
-                    <a className="dropdown-item" href="#">
-                      Eliminar carrito
-                    </a>
-                  </li>
-                </ul>
-              </li>
-            )}
+            <li className="nav-item dropdown">
+              <a
+                className="nav-link dropdown-toggle"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <i className="fas fa-shopping-cart"></i>
+              </a>
+              <ul className="dropdown-menu">
+                <li>
+                  <Link to={`/user/${userId}/carritoCompras`} className="dropdown-item">
+                    Productos
+                  </Link>
+                </li>
+                <li>
+                  <hr className="dropdown-divider" />
+                </li>
+                <li>
+                  <a className="dropdown-item" href="#">
+                    Another action
+                  </a>
+                </li>
+                <li>
+                  <hr className="dropdown-divider" />
+                </li>
+                <li>
+                  <a className="dropdown-item" href="#">
+                    Eliminar carrito
+                  </a>
+                </li>
+              </ul>
+            </li>
           </ul>
         </div>
       </div>
