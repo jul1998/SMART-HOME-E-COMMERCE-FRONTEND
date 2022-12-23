@@ -14,7 +14,6 @@ function Products() {
       let response = await actions.genericFetch("products_list");
       console.log(response);
       let jsonResponse = await response.json();
-      console.log(jsonResponse);
       setProducts(jsonResponse);
     }
 

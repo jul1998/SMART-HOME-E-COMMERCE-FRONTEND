@@ -3,6 +3,7 @@ import "../../styles/navbar.css";
 import { Link } from "react-router-dom";
 import smartHomeImg from "../../img/LOGOTIPO.png";
 import { Context } from "../store/appContext";
+import ShoppingCartIcon from "./ProductComp/ShoppingCartComp.jsx";
 
 export const Navbar = () => {
   const { store, actions } = useContext(Context);

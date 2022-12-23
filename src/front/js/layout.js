@@ -17,7 +17,7 @@ import {DeleteUserAccount} from "./component/UserComp/DeleteAccount.jsx"
 import { ProductDetailPage } from "./pages/ProductPage/ProducDetailPage.jsx";
 import { LogOut } from "./component/UserComp/LogOut.jsx";
 import { ShowProductPageFiltered } from "./pages/ProductPage/ProductPageFiltered.jsx";
-
+import ShoppingCart from "./pages/ProductPage/ShoppingCartPage.jsx"
 import { CarritoCompras } from "./pages/ProductPage/CarritoCompras.jsx";
 
 
@@ -54,6 +54,7 @@ const Layout = () => {
             <Route element={<DeleteUserAccount />} path="/userProfile/:theid/delete_account" />
             <Route element={<ProductDetailPage />} path="/product/:theid/detail_page" />
             <Route element={<CarritoCompras />} path="/user/:theid/carritoCompras"/>
+            <Route element={<ShoppingCart />} path="/shoppingcart"/>
             <Route element={<LogOut />} path="/logout" />
             <Route element={<h1>Not found!</h1>} />
           </Routes>

@@ -3,6 +3,7 @@ import React, { useState, useContext, useEffect } from "react";
 import "../../../styles/products.css";
 import { Context } from "../../store/appContext";
 import { useNavigate } from "react-router-dom";
+import ShoppingCartIcon from "./ShoppingCartComp.jsx";
 
 function ProductItem({ product }) {
   const { store, actions } = useContext(Context);
@@ -29,7 +30,7 @@ function ProductItem({ product }) {
   };
 
   const showFavButton = isToken ? (
-    <button onClick={() => addToFav()} type="button" className="button">
+    <button onClick={() => addToFav()} type="button" className="button--product">
       <i class="far fa-heart"></i>
     </button>
   ) : (
@@ -41,6 +42,8 @@ function ProductItem({ product }) {
       Login to buy/add product to favorites
     </button>
   );
+
+  
 
   return (
     <div className="col-12 col-md-4 my-2">
@@ -62,11 +65,7 @@ function ProductItem({ product }) {
           <p className="card-text">Price: {priceDisplay}</p>
           {showFavButton}
           {isToken ? (
-            <Link to={`/product/${product.id}/detail_page`}>
-              <button className="button">
-                <i className="fas fa-shopping-cart"></i>
-              </button>
-            </Link>
+                <ShoppingCartIcon product={product} price={floatProduct}/>
           ) : null}
         </div>
       </div>
