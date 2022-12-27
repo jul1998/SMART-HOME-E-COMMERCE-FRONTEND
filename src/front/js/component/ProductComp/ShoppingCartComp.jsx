@@ -1,7 +1,8 @@
 import React from 'react';
 import { Table, Button } from 'react-bootstrap';
 
-const ShoppingCart = ({ items, total, onCheckout }) => {
+const ShoppingCart = ({ items, total, onCheckout, onRemove }) => {
+
   return (
     <div>
       <h2>Shopping Cart</h2>
@@ -10,16 +11,17 @@ const ShoppingCart = ({ items, total, onCheckout }) => {
           <tr>
             <th>Item</th>
             <th>Price</th>
-            <th></th>
+            <th>Quantity</th>
           </tr>
         </thead>
         <tbody>
           {items.map((item, index) => (
             <tr key={index}>
-              <td>{item.name}</td>
-              <td>{item.price}</td>
+              <td>{item.product_name}</td>
+              <td>{item.product_price}</td>
+              <td>{item.quantity}</td>
               <td>
-                <Button variant="danger" size="sm">
+                <Button onClick={()=>onRemove(item.id)} variant="danger" size="sm">
                   Remove
                 </Button>
               </td>
