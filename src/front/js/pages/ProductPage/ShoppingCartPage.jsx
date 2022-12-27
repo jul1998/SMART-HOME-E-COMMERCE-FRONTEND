@@ -1,41 +1,33 @@
-import React from 'react';
-import { Table, Button } from 'react-bootstrap';
+import React, {useState} from 'react';
+import ShoppingCart from '../../component/ProductComp/ShoppingCartComp.jsx';
 
-const ShoppingCart = ({ items, total, onCheckout }) => {
-  return (
-    <div>
-      <h2>Shopping Cart</h2>
-      <Table striped bordered hover>
-        <thead>
-          <tr>
-            <th>Item</th>
-            <th>Price</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          {items.map((item, index) => (
-            <tr key={index}>
-              <td>{item.name}</td>
-              <td>{item.price}</td>
-              <td>
-                <Button variant="danger" size="sm">
-                  Remove
-                </Button>
-              </td>
-            </tr>
-          ))}
-          <tr>
-            <td colSpan={2}>Total</td>
-            <td>{total}</td>
-          </tr>
-        </tbody>
-      </Table>
-      <Button variant="primary">
-        Checkout
-      </Button>
-    </div>
-  );
-};
+function ShoppingCartPage() {
+    const [items, setItems] = useState([
+      { id: 1, name: 'Apple', price: 0.5, quantity: 10 },
+      { id: 2, name: 'Banana', price: 0.25, quantity: 5 }
+    ]);
+  
+    function addItem(item) {
+      setItems([...items, item]);
+    }
+  
+    function removeItem(id) {
+      setItems(items.filter(item => item.id !== id));
+    }
+  
+    function updateQuantity(id, quantity) {
+      setItems(
+        items.map(item => {
+          if (item.id === id) {
+            return { ...item, quantity };
+          }
+          return item;
+        })
+      );
+    }
+    return(
+        <ShoppingCart items={items} total={10} />
+    )
+}
 
-export default ShoppingCart;
+export {ShoppingCartPage}

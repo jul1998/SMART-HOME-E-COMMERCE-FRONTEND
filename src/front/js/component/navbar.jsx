@@ -3,14 +3,13 @@ import "../../styles/navbar.css";
 import { Link } from "react-router-dom";
 import smartHomeImg from "../../img/LOGOTIPO.png";
 import { Context } from "../store/appContext";
-import ShoppingCartIcon from "./ProductComp/ShoppingCartComp.jsx";
+import ShoppingCartIcon from "./ProductComp/ShoppingCartCompIcon.jsx";
 
 export const Navbar = () => {
   const { store, actions } = useContext(Context);
   let isToken = actions.showToken(); //If token exists, then signup button will not be available
   //else it will appear in navbar
-  let userId = localStorage.getItem("user_id")
-
+  let userId = localStorage.getItem("user_id");
 
   return (
     <nav className="navbar navbar-expand-lg bg-dark" id="navbarcontent1">
@@ -20,13 +19,16 @@ export const Navbar = () => {
         </Link>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-            <Link to="/products/filtered"><button type="button" class="btn btn-info">Search product </button></Link>
-
+            <Link to="/products/filtered">
+              <button type="button" class="btn btn-info">
+                Search product{" "}
+              </button>
+            </Link>
           </ul>
           <li className="nav-item-signUp">
             {!isToken ? (
               <Link to="/signup">
-                <button className="button">Sign Up</button>
+                <button className="button--navbar">Sign Up</button>
               </Link>
             ) : null}
           </li>
@@ -54,7 +56,6 @@ export const Navbar = () => {
                     >
                       Settings
                     </Link>
-
                   )}
 
                   <hr className="dropdown-divider" />
@@ -68,7 +69,6 @@ export const Navbar = () => {
                         Account
                       </Link>
                     ) : null}
-
                   </li>
                 </li>
                 {!isToken ? null : <hr className="dropdown-divider" />}
@@ -94,7 +94,10 @@ export const Navbar = () => {
               </a>
               <ul className="dropdown-menu">
                 <li>
-                  <Link to={`/user/${userId}/carritoCompras`} className="dropdown-item">
+                  <Link
+                    to={`/user/${userId}/carritoCompras`}
+                    className="dropdown-item"
+                  >
                     Productos
                   </Link>
                 </li>

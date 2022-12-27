@@ -1,41 +1,41 @@
-import React, { useState } from 'react';
-import ShoppingCart from "../../pages/ProductPage/ShoppingCartPage.jsx";
+import React from 'react';
+import { Table, Button } from 'react-bootstrap';
 
-const ShoppingCartIcon = ({product, price}) => {
-  const [items, setItems] = useState([]);
-  const [total, setTotal] = useState(0);
-
-  const addItem = (product) => {
-    setItems(prevItem =>[...prevItem,product]);
-    setTotal(total + price);
-  }
-
-  const removeItem = (id) => {
-    setItems((prevCartItems) =>
-    prevCartItems.filter((element) => element.id !== id)
-        );
-      };
-
-  function cartIcon (){
-      const isInCart = items.some(ele => ele.id ===product.id)
-      if (isInCart){
-        return  <button onClick={() => removeItem(product.id)} className="button--product"><i  className="fas fa-times"></i></button>
-      }else{
-        return <button onClick={() => addItem(product)} className="button--product"><i  className="fas fa-shopping-cart"></i></button>
-      }
-    }
-
-
-    
-
-
+const ShoppingCart = ({ items, total, onCheckout }) => {
   return (
     <div>
-
-        {cartIcon()}
-
+      <h2>Shopping Cart</h2>
+      <Table striped bordered hover>
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th>Price</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          {items.map((item, index) => (
+            <tr key={index}>
+              <td>{item.name}</td>
+              <td>{item.price}</td>
+              <td>
+                <Button variant="danger" size="sm">
+                  Remove
+                </Button>
+              </td>
+            </tr>
+          ))}
+          <tr>
+            <td colSpan={2}>Total</td>
+            <td>{total}</td>
+          </tr>
+        </tbody>
+      </Table>
+      <Button variant="primary">
+        Checkout
+      </Button>
     </div>
   );
 };
 
-export default ShoppingCartIcon;
+export default ShoppingCart;
