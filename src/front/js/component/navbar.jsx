@@ -95,7 +95,7 @@ export const Navbar = () => {
               <ul className="dropdown-menu">
                 <li>
                   <Link
-                    to={`/user/${userId}/carritoCompras`}
+                    to={`/user/${userId}/shoppingcart`}
                     className="dropdown-item"
                   >
                     Productos

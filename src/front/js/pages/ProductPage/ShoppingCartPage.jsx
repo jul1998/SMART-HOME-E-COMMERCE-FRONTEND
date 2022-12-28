@@ -1,6 +1,7 @@
 import React, {useEffect, useState, useContext} from 'react';
 import ShoppingCart from '../../component/ProductComp/ShoppingCartComp.jsx';
 import { Context } from "../../store/appContext";
+import PaypalIntegration from '../../component/Paypal/PaypalIntegrationComp.jsx';
 
 
 function ShoppingCartPage() {
@@ -19,7 +20,9 @@ function ShoppingCartPage() {
   
     function removeItem(id) {
         console.log(items)
-      setItems(items.filter(item => item.id !== id));
+      setItems(items.filter(item => item.id !== id)
+      
+      );
     }
   
     function updateQuantity(id, quantity) {
@@ -53,11 +56,16 @@ function ShoppingCartPage() {
             style: "currency",
             currency: "USD",
           });
-          return priceDisplay
+          return {priceDisplay, total}
     }
 
+
     return(
-        <ShoppingCart items={items} total={displayTotal()} onRemove={removeItem} />
+      <>
+        <ShoppingCart items={items} total={displayTotal().priceDisplay} onRemove={removeItem} />
+        <PaypalIntegration price={displayTotal().total}/>
+      </>
+
     )
 }
 

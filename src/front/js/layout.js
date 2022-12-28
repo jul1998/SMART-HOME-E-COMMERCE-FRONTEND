@@ -19,6 +19,7 @@ import { LogOut } from "./component/UserComp/LogOut.jsx";
 import { ShowProductPageFiltered } from "./pages/ProductPage/ProductPageFiltered.jsx";
 import {ShoppingCartPage} from "./pages/ProductPage/ShoppingCartPage.jsx";
 import { CarritoCompras } from "./pages/ProductPage/CarritoCompras.jsx";
+import PaypalIntegration from "./component/Paypal/PaypalIntegrationComp.jsx";
 
 import injectContext from "./store/appContext";
 
@@ -71,7 +72,8 @@ const Layout = () => {
               element={<CarritoCompras />}
               path="/user/:theid/carritoCompras"
             />
-            <Route element={<ShoppingCartPage />} path="/shoppingcart" />
+            <Route element={<ShoppingCartPage />} path="user/:theid/shoppingcart" />
+            <Route element={<PaypalIntegration />} path="/paypalIntegration" />
             <Route element={<LogOut />} path="/logout" />
             <Route element={<h1>Not found!</h1>} />
           </Routes>

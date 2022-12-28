@@ -15,7 +15,7 @@ const ShoppingCart = ({ items, total, onCheckout, onRemove }) => {
           </tr>
         </thead>
         <tbody>
-          {items.map((item, index) => (
+          {Array.isArray(items)? items.map((item, index) => (
             <tr key={index}>
               <td>{item.product_name}</td>
               <td>{item.product_price}</td>
@@ -26,16 +26,13 @@ const ShoppingCart = ({ items, total, onCheckout, onRemove }) => {
                 </Button>
               </td>
             </tr>
-          ))}
+          )):alert("You need to relogin")}
           <tr>
             <td colSpan={2}>Total</td>
             <td>{total}</td>
           </tr>
         </tbody>
       </Table>
-      <Button variant="primary">
-        Checkout
-      </Button>
     </div>
   );
 };
