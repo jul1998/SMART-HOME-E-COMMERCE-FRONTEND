@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 import { useNavigate } from "react-router-dom";
 
-export default function PaypalIntegration({price}) {
+export default function PaypalIntegration({price, products}) {
  const [show, setShow] = useState(false);
  const [success, setSuccess] = useState(false);
  const [ErrorMessage, setErrorMessage] = useState("");
@@ -60,11 +60,12 @@ export default function PaypalIntegration({price}) {
       <div>
         <div className="wrapper">
             
-  
+      
             <div className="product-price-btn">
-              <button className="btn btn-primary" type="submit" onClick={() => setShow(true)}>
+              {products.length>0?<button className="btn btn-primary" type="submit" onClick={() => setShow(true)}>
                 Checkout
-              </button>
+              </button>:<h3>No products in shopping cart</h3>}
+              
             </div>
         </div>
   
