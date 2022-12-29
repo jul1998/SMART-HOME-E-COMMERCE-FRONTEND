@@ -9,10 +9,7 @@ function ShoppingCartPage() {
     const userId = localStorage.getItem("user_id")
     console.log(userId)
 
-    const [items, setItems] = useState([
-      { id: 1, name: 'Apple', price: 0.5, quantity: 10 },
-      { id: 2, name: 'Banana', price: 0.25, quantity: 5 }
-    ]);
+    const [items, setItems] = useState([]);
   
     function addItem(item) {
       setItems([...items, item]);
@@ -69,7 +66,7 @@ function ShoppingCartPage() {
     return(
       <>
         <ShoppingCart items={items} total={displayTotal().priceDisplay} onRemove={removeItem} onRemoveAPI={removeItemAPIRequest} />
-        <PaypalIntegration price={displayTotal().total}/>
+        <PaypalIntegration price={displayTotal().total} products={items}/>
       </>
 
     )
