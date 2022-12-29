@@ -1,6 +1,7 @@
 import React, {useEffect, useState, useContext} from 'react';
 import ShoppingCart from '../../component/ProductComp/ShoppingCartComp.jsx';
 import { Context } from "../../store/appContext";
+import PaypalIntegration from '../../component/Paypal/PaypalIntegrationComp.jsx';
 
 
 function ShoppingCartPage() {
@@ -19,7 +20,15 @@ function ShoppingCartPage() {
   
     function removeItem(id) {
         console.log(items)
-      setItems(items.filter(item => item.id !== id));
+      setItems(items.filter(item => item.id !== id)
+      );
+      removeItemAPIRequest(id)
+    }
+
+    async function removeItemAPIRequest(product_id){
+      let response = await actions.genericFetchProtected(`delete/product/${product_id}/user/${userId}/shopping_cart`, "DELETE")
+      let jsonResponse = await response.json()
+      console.log(jsonResponse)
     }
   
     function updateQuantity(id, quantity) {
@@ -53,11 +62,16 @@ function ShoppingCartPage() {
             style: "currency",
             currency: "USD",
           });
-          return priceDisplay
+          return {priceDisplay, total}
     }
 
+
     return(
-        <ShoppingCart items={items} total={displayTotal()} onRemove={removeItem} />
+      <>
+        <ShoppingCart items={items} total={displayTotal().priceDisplay} onRemove={removeItem} onRemoveAPI={removeItemAPIRequest} />
+        <PaypalIntegration price={displayTotal().total}/>
+      </>
+
     )
 }
 
