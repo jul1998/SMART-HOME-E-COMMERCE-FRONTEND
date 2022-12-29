@@ -1,13 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import ShoppingCart from "./ShoppingCartComp.jsx";
+import { Context } from "../../store/appContext";
 
 const ShoppingCartIcon = ({ product, price }) => {
   const [items, setItems] = useState([]);
   const [total, setTotal] = useState(0);
+  const { store, actions } = useContext(Context);
 
   const addItem = (product) => {
     setItems((prevItem) => [...prevItem, product]);
     setTotal(total + price);
+    actions.addToShoppingCartRequest()
   };
 
   const removeItem = (id) => {

@@ -12,7 +12,6 @@ function Products() {
   useEffect(() => {
     async function fetch() {
       let response = await actions.genericFetch("products_list");
-      console.log(response);
       let jsonResponse = await response.json();
       setProducts(jsonResponse);
     }
