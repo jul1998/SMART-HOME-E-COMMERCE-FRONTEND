@@ -20,7 +20,7 @@ import { ShowProductPageFiltered } from "./pages/ProductPage/ProductPageFiltered
 import {ShoppingCartPage} from "./pages/ProductPage/ShoppingCartPage.jsx";
 import { CarritoCompras } from "./pages/ProductPage/CarritoCompras.jsx";
 import PaypalIntegration from "./component/Paypal/PaypalIntegrationComp.jsx";
-
+import PaymentSuccessPage from "./component/Paypal/OnSuccess.jsx";
 import injectContext from "./store/appContext";
 
 import { Navbar } from "./component/navbar.jsx";
@@ -73,7 +73,7 @@ const Layout = () => {
               path="/user/:theid/carritoCompras"
             />
             <Route element={<ShoppingCartPage />} path="user/:theid/shoppingcart" />
-            <Route element={<PaypalIntegration />} path="/paypalIntegration" />
+            <Route element={<PaymentSuccessPage />} path="/payment/success" />
             <Route element={<LogOut />} path="/logout" />
             <Route element={<h1>Not found!</h1>} />
           </Routes>

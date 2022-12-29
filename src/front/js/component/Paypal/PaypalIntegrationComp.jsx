@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
+import { useNavigate } from "react-router-dom";
 
 export default function PaypalIntegration({price}) {
  const [show, setShow] = useState(false);
  const [success, setSuccess] = useState(false);
  const [ErrorMessage, setErrorMessage] = useState("");
  const [orderID, setOrderID] = useState(false);
+ const navigate = useNavigate()
 
 
  // creates a paypal order
@@ -37,14 +39,18 @@ export default function PaypalIntegration({price}) {
    return actions.order.capture().then(function (details) {
      const { payer } = details;
      setSuccess(true);
+     return navigate("/payment/success")
    });
  };
 
- console.log(success)
  //capture likely error
  const onError = (data, actions) => {
    setErrorMessage("An Error occured with your payment ");
+   alert(console.ErrorMessage)
  };
+
+
+ 
  return (
     <PayPalScriptProvider
       options={{

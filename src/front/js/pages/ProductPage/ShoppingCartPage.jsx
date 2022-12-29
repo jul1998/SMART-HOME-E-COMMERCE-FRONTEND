@@ -21,8 +21,14 @@ function ShoppingCartPage() {
     function removeItem(id) {
         console.log(items)
       setItems(items.filter(item => item.id !== id)
-      
       );
+      removeItemAPIRequest(id)
+    }
+
+    async function removeItemAPIRequest(product_id){
+      let response = await actions.genericFetchProtected(`delete/product/${product_id}/user/${userId}/shopping_cart`, "DELETE")
+      let jsonResponse = await response.json()
+      console.log(jsonResponse)
     }
   
     function updateQuantity(id, quantity) {
@@ -62,7 +68,7 @@ function ShoppingCartPage() {
 
     return(
       <>
-        <ShoppingCart items={items} total={displayTotal().priceDisplay} onRemove={removeItem} />
+        <ShoppingCart items={items} total={displayTotal().priceDisplay} onRemove={removeItem} onRemoveAPI={removeItemAPIRequest} />
         <PaypalIntegration price={displayTotal().total}/>
       </>
 
