@@ -10,8 +10,8 @@ const ShoppingCartIcon = ({ product, price }) => {
   const addItem = (product) => {
     setItems((prevItem) => [...prevItem, product]);
     setTotal(total + price);
-    actions.addToShoppingCartRequest()
-  };
+    actions.addToShoppingCartRequest("user/<int:user_id>/product/<int:product_id>/quantity/<int:quantity>/add_shopping_cart")
+  }; //Continue here
 
   const removeItem = (id) => {
     setItems((prevCartItems) =>
