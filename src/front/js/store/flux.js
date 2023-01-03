@@ -1,6 +1,7 @@
 import { userStore, userActions } from "./User/user";
 import { userAdminStore, userAdminActions } from "./User/userAdmin";
 import { paypalActions, paypalStore } from "./Paypal/token";
+import {productStore, productActions} from "./Product/product"
 
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
@@ -20,7 +21,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			],
 			...userStore,
 			...userAdminStore,
-			...paypalStore
+			...paypalStore,
+			...productStore
 			
 		},
 		actions: {
@@ -28,6 +30,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			...userActions(getStore, getActions, setStore),
 			...userAdminActions(getStore, getActions, setStore),
 			...paypalActions(getStore, getActions, setStore),
+			...productActions(getStore, getActions, setStore),
 			
 			exampleFunction: () => {
 				getActions().changeColor(0, "green");
