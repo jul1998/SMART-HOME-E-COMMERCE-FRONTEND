@@ -1,13 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 import { useNavigate } from "react-router-dom";
+import { Context } from "../../store/appContext";
 
 export default function PaypalIntegration({price, products}) {
  const [show, setShow] = useState(false);
  const [success, setSuccess] = useState(false);
  const [ErrorMessage, setErrorMessage] = useState("");
  const [orderID, setOrderID] = useState(false);
+ const { store, actions } = useContext(Context);
  const navigate = useNavigate()
+
+
 
 
  // creates a paypal order
@@ -42,6 +46,7 @@ export default function PaypalIntegration({price, products}) {
      return navigate("/payment/success")
    });
  };
+
 
  //capture likely error
  const onError = (data, actions) => {

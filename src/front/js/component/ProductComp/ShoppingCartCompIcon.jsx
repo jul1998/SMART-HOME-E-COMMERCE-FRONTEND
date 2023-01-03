@@ -24,13 +24,13 @@ const ShoppingCartIcon = ({ product, price }) => {
       Swal.fire({
         icon: 'success',
         title: 'Great!',
-        text: `${jsonRes.msg}`,
+        text: `${jsonRes.message}`,
       })
     }else{
       Swal.fire({
         icon: 'error',
         title: 'Error',
-        text: `${jsonRes.msg}`,
+        text: `${jsonRes.message}`,
       })
     }
 
@@ -48,13 +48,13 @@ const ShoppingCartIcon = ({ product, price }) => {
       Swal.fire({
         icon: 'error',
         title: 'Error!',
-        text: `${jsonRes.msg}`,
+        text: `${jsonRes.message}`,
       })
     }else{
       Swal.fire({
         icon: 'success',
         title: 'Awesome!',
-        text: `${jsonRes.msg}`,
+        text: `${jsonRes.message}`,
       })
     }
   };
