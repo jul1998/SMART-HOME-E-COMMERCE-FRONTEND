@@ -23,21 +23,13 @@ function ShoppingCartPage() {
     }
 
     async function removeItemAPIRequest(product_id){
-      let response = await actions.genericFetchProtected(`delete/product/${product_id}/user/${userId}/shopping_cart`, "DELETE")
-      let jsonResponse = await response.json()
-      console.log(jsonResponse)
-    }
-  
-    function updateQuantity(id, quantity) {
-      setItems(
-        items.map(item => {
-          if (item.id === id) {
-            return { ...item, quantity };
-          }
-          return item;
-        })
-      );
-    }
+      let bodyObj = {
+        "product_id": product_id
+      }
+      let response = await actions.actionsShoppingCartRequest(`delete/user/${userId}/shopping_cart`, "DELETE", bodyObj)
+      let jsonRes = await response.json()
+    };
+    
 
     useEffect(()=>{
         async function fetch() {

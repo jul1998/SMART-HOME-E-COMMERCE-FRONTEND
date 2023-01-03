@@ -1,30 +1,69 @@
 import React, { useState, useContext } from "react";
 import ShoppingCart from "./ShoppingCartComp.jsx";
 import { Context } from "../../store/appContext";
+import Swal from "sweetalert2";
 
 const ShoppingCartIcon = ({ product, price }) => {
-  const [items, setItems] = useState([]);
-  const [total, setTotal] = useState(0);
-  const { store, actions } = useContext(Context);
 
-  const addItem = (product) => {
-    setItems((prevItem) => [...prevItem, product]);
-    setTotal(total + price);
-    actions.addToShoppingCartRequest("user/<int:user_id>/product/<int:product_id>/quantity/<int:quantity>/add_shopping_cart")
+  const { store, actions } = useContext(Context);
+  const [items, setItems] = useState([]);
+  const [isInCart, setIsInCart] = useState(false);
+
+
+  let userId = localStorage.getItem("user_id")
+
+  const addItem = async () => {
+    let bodyObj = {
+      "product_id": product.id,
+      "quantity": 1
+    }
+    let response = await actions.actionsShoppingCartRequest(`user/${userId}/add_shopping_cart`, "POST", bodyObj)
+    let jsonRes = await response.json()
+    setIsInCart(true)
+    if (response.ok){
+      Swal.fire({
+        icon: 'success',
+        title: 'Great!',
+        text: `${jsonRes.msg}`,
+      })
+    }else{
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: `${jsonRes.msg}`,
+      })
+    }
+
   }; //Continue here
 
-  const removeItem = (id) => {
-    setItems((prevCartItems) =>
-      prevCartItems.filter((element) => element.id !== id)
-    );
+  const removeItem = async() => {
+
+    let bodyObj = {
+      "product_id": product.id
+    }
+    let response = await actions.actionsShoppingCartRequest(`delete/user/${userId}/shopping_cart`, "DELETE", bodyObj)
+    setIsInCart(false)
+    let jsonRes = await response.json()
+    if (!response.ok){
+      Swal.fire({
+        icon: 'error',
+        title: 'Error!',
+        text: `${jsonRes.msg}`,
+      })
+    }else{
+      Swal.fire({
+        icon: 'success',
+        title: 'Awesome!',
+        text: `${jsonRes.msg}`,
+      })
+    }
   };
 
   function cartIcon() {
-    const isInCart = items.some((ele) => ele.id === product.id);
     if (isInCart) {
       return (
         <button
-          onClick={() => removeItem(product.id)}
+          onClick={() => removeItem()}
           className="button--product"
         >
           <i className="fas fa-times"></i>
@@ -32,7 +71,7 @@ const ShoppingCartIcon = ({ product, price }) => {
       );
     } else {
       return (
-        <button onClick={() => addItem(product)} className="button--product">
+        <button onClick={() => addItem()} className="button--product">
           <i className="fas fa-shopping-cart"></i>
         </button>
       );
