@@ -34,7 +34,7 @@ const ShoppingCartIcon = ({ product, price }) => {
       })
     }
 
-  }; //Continue here
+  }; 
 
   const removeItem = async() => {
 
