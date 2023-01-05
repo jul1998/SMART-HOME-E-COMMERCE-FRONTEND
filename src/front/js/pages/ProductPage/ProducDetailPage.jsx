@@ -1,5 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
 import { ProductDetailPageComp } from "../../component/ProductComp/ProductPageComp.jsx"; 
+import CommentSection from "../../component/ProductComp/CommentsComp.jsx";
 import "../../../styles/products.css";
 import Swal from "sweetalert2";
 import { Context } from "../../store/appContext";
@@ -54,6 +55,7 @@ function ProductDetailPage() {
   return (
     <div>
         <ProductDetailPageComp product={product} description={description} questions={questions}/>
+        <CommentSection/>
     </div>
   )
 }
