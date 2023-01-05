@@ -1,6 +1,8 @@
 import { useParams } from "react-router-dom";
 import React, { useState, useContext, useEffect } from "react";
 import "../../../styles/products.css";
+import ShoppingCart from "./ShoppingCartComp.jsx";
+import Swal from "sweetalert2";
 import { Context } from "../../store/appContext";
 import { useNavigate } from "react-router-dom";
 
@@ -41,6 +43,7 @@ function ProductDetailPageComp({ product, description, questions }) {
 
   function incrementQuantity() {
     setItempQuantity((prevQuant) => prevQuant + 1);
+    
   }
 
   function reduceQuantity() {
@@ -49,6 +52,7 @@ function ProductDetailPageComp({ product, description, questions }) {
     } else {
       setItempQuantity((prevQuant) => prevQuant - 1);
     }
+    
   }
 
   async function sendQuestion (e){
@@ -90,7 +94,51 @@ function ProductDetailPageComp({ product, description, questions }) {
       )
   })
 
-  console.log(questionText)
+  async function addToCart(){
+    let bodyObj = {
+      "product_id": product.id,
+      "quantity": itempQuantity
+    }
+    let response = await actions.actionsShoppingCartRequest(`user/${userId}/add_shopping_cart`, "POST", bodyObj)
+    let jsonRes = await response.json()
+    if (response.ok){
+      Swal.fire({
+        icon: 'success',
+        title: 'Great!',
+        text: `${jsonRes.message}`,
+      })
+    }else{
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: `${jsonRes.message}`,
+      })
+    }
+  }; 
+  
+  async function modifyQuantity(){
+    let bodyObj = {
+      "product_id": product.id,
+      "quantity": itempQuantity
+    }
+    let response = await actions.actionsShoppingCartRequest(`user/${userId}/modify_quantity/shopping_cart`, "PATCH", bodyObj)
+    let jsonRes = await response.json()
+    if (response.ok){
+      Swal.fire({
+        icon: 'success',
+        title: 'Great!',
+        text: `${jsonRes.message}`,
+      })
+    }else{
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: `${jsonRes.message}`,
+      })
+    }
+  }; 
+
+ 
   return (
     <div>
       <div className="container text-center">
@@ -135,14 +183,19 @@ function ProductDetailPageComp({ product, description, questions }) {
                 </div>
               </div>
               <div className="col-sm-6 col-md-5 offset-md-2 col-lg-6 offset-lg-0">
-                <button class="button-64" role="button">
+                <button onClick={addToCart} class="button-64" role="button">
                   <span class="text">Add to cart</span>
                 </button>
               </div>
 
-              <div class="row my-5">
-                <div class="col-sm-6 col-md-5 col-lg-6">
+              <div className="row my-5">
+                <div className="col-sm-6 col-md-5 col-lg-6">
                   {/* This line displays code quantity*/}
+                  {itempQuantity>0?
+                    <button onClick={modifyQuantity} type="button" className="btn btn-info active" data-bs-toggle="button" aria-pressed="true">Modify quantity</button>
+                  :<button type="button" className="btn btn-info" disabled data-bs-toggle="button">Modify quantity</button>
+                }
+                  
                 </div>
               </div>
 
