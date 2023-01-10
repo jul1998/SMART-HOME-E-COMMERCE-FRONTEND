@@ -1,0 +1,26 @@
+.comment--placeholder{
+    width: 20px;
+    height: 20px;
+    background-Color: #cccccc;
+    border-Radius: 50%;
+    display: flex;
+    align-Items: center;
+    justify-Content: center;
+    font-Size: 24px;
+    color: #ffffff;
+    margin-right: 10px;
+}
+
+.comment--user-comment{
+    margin-bottom: 50px;
+}
+
+.comment-helful-btn{
+    display: flex;
+}
+
+.comment-helful-btn> button{
+    width: 30px;
+    height: 30px;
+    margin-right: 5px;
+}
