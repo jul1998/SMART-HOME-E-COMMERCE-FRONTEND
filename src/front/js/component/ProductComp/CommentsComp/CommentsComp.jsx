@@ -6,9 +6,11 @@ import { useNavigate, useParams } from "react-router-dom";
 import HelpfulButton from "./HelpfulButtonComp.jsx";
 
 
+
 export default function CommentSection() {
   const { store, actions } = useContext(Context);
   const [comments, setComments] = useState("");
+  const [isExpanded, setIsExpanded] = useState(false);
   const params = useParams();
 
   useEffect(() => {
@@ -21,6 +23,7 @@ export default function CommentSection() {
     }
     fetch();
   }, []);
+
 
   console.log(comments);
   return (
@@ -35,10 +38,18 @@ export default function CommentSection() {
                   <img
                     src={comment.author_img}
                     className="comment--placeholder"
-                  ></img>{" "}
+                  ></img>
                   <p>Posted by {comment.author}</p>
                 </div>
-                <div >{comment.comment}</div>
+                <div >
+                  {isExpanded ?comment.comment:comment.comment.slice(0, 100)}
+                  {comment.comment.length >100&& <button 
+                  onClick={() => setIsExpanded(!isExpanded)}
+                  className="comment-read-more-btn">
+                    {isExpanded ? 'Show less' : 'Read more'}
+                  </button>}
+                  </div>
+                  {/*Continue here with the text to send a comment */}
                 <span><HelpfulButton/></span>
               </div>
             );
