@@ -4,6 +4,7 @@ import "../../../../styles/comments.css";
 import { Context } from "../../../store/appContext";
 import { useNavigate, useParams } from "react-router-dom";
 import HelpfulButton from "./HelpfulButtonComp.jsx";
+import DisplayTextArea from "./CommentTextArea.jsx";
 
 
 
@@ -12,6 +13,8 @@ export default function CommentSection() {
   const [comments, setComments] = useState("");
   const [isExpanded, setIsExpanded] = useState(false);
   const params = useParams();
+  let isToken = actions.showToken();
+  let navigate = useNavigate()
 
   useEffect(() => {
     async function fetch() {
@@ -49,7 +52,7 @@ export default function CommentSection() {
                     {isExpanded ? 'Show less' : 'Read more'}
                   </button>}
                   </div>
-                  {/*Continue here with the text to send a comment */}
+                  
                 <span><HelpfulButton/></span>
               </div>
             );
@@ -57,7 +60,17 @@ export default function CommentSection() {
         ) : (
           <h3>No comments</h3>
         )}
+
       </div>
+          {/*Continue here with the text to send a comment */}
+          {isToken?<DisplayTextArea/>:<button
+                          onClick={() => navigate("/login")}
+                          type="button"
+                          className="btn btn-outline-info"
+                        >
+                          Login to post Comments
+                        </button>}
+          
     </div>
   );
 }

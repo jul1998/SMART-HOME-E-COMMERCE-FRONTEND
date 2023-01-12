@@ -24,7 +24,7 @@ function UserPassword() {
     });
   }
 
-  console.log(formData)
+  
   
   function checkPassword(){
     const {newPassword, confirmPassword} = formData
@@ -54,7 +54,7 @@ function UserPassword() {
       bodyObj
     );
     let jsonRes = await response.json();
-    console.log(jsonRes)
+    
 
     if (response.ok) {
       Swal.fire({
