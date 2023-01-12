@@ -37,3 +37,13 @@
     border: none;
     box-Shadow: 0px 4px 4px rgba(0, 0, 0, 0.25)
 }
+
+.comment-text-area {
+    width: 70%; /* set the width to fill the parent container*/
+    min-height: 150px; /* set a minimum height */
+    padding: 10px; /* add some padding */
+    border: 1px solid #ccc; /* add a border */
+    border-radius: 4px; /* round the edges */
+    font-size: 14px; /* set the font size */
+    resize: none; /* disable resizing */
+    }
