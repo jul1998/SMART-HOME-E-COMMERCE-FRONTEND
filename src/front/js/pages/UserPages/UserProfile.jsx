@@ -1,8 +1,8 @@
 import React, { useState, useContext, useEffect} from "react";
 import "../../../styles/userProfile.css";
-
 import { Context } from "../../store/appContext";
 import { Link, useParams } from "react-router-dom";
+import UserPageNavbar from "../../component/UserComp/UserNavbar.jsx";
 
 function UserProfile() {
   const { store, actions } = useContext(Context);
@@ -27,7 +27,11 @@ const displayImg = userInfo.img_profile? userInfo.img_profile: "https://upload.w
 
 
   return (
-    <div className="userProfile">
+    <div className="container">
+      <div className="user-navbar">
+        <UserPageNavbar/>
+      </div>
+        <div className="userProfile">
       <div className="card-userProfile">
         <img className="img-userProfile" src={displayImg} alt="John" />
         <h1>{userInfo.name}</h1>
@@ -40,6 +44,8 @@ const displayImg = userInfo.img_profile? userInfo.img_profile: "https://upload.w
         </p>
       </div>
     </div>
+    </div>
+    
   );
 }
 
