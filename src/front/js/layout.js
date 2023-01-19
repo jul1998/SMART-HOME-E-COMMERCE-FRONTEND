@@ -19,8 +19,9 @@ import { LogOut } from "./component/UserComp/LogOut.jsx";
 import { ShowProductPageFiltered } from "./pages/ProductPage/ProductPageFiltered.jsx";
 import {ShoppingCartPage} from "./pages/ProductPage/ShoppingCartPage.jsx";
 import { CarritoCompras } from "./pages/ProductPage/CarritoCompras.jsx";
-import PaypalIntegration from "./component/Paypal/PaypalIntegrationComp.jsx";
+//import PaypalIntegration from "./component/Paypal/PaypalIntegrationComp.jsx";
 import PaymentSuccessPage from "./component/Paypal/OnSuccess.jsx";
+import DisplayTickets from "./pages/Tickets/TicketsPage.jsx";
 import injectContext from "./store/appContext";
 
 import { Navbar } from "./component/navbar.jsx";
@@ -74,7 +75,8 @@ const Layout = () => {
             />
             <Route element={<ShoppingCartPage />} path="user/:theid/shoppingcart" />
             <Route element={<PaymentSuccessPage />} path="/payment/success" />
-            <Route element={<LogOut />} path="/logout" />
+            <Route element={<LogOut />} path="/logout"/>
+            <Route element={<DisplayTickets />} path="/user/:theid/tickets"/>
             <Route element={<h1>Not found!</h1>} />
           </Routes>
           <Footer />
