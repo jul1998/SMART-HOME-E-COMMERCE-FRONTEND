@@ -30,7 +30,7 @@ function DisplayTickets(){
       <small>{ticket.date.substring(0,16)}</small>
     </div>
     <p class="mb-1">{ticket.description.length<30?ticket.description:ticket.description.slice(0,20) + "..."}</p>
-    <small>Click in ticket to see more info</small>
+    <small>Click in ticket to see more info</small> {/*Continue here*/}
   </a>
 </div>
             )
